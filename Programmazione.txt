@@ -1,0 +1,34 @@
+1. Installazione e configurazione degli strumenti
+installati e configurati gli strumenti:
+- Node.js + npm: per sviluppare backend e gestire i pacchetti del frontend
+- Express.js: per definire il server http le API REST
+- MongoDB locale: usato come database NoSQL per conservare i dati
+- Mongoose: per modellare le collection MongoDB tramite schemi
+- Git/GitHub: per salvataggio  e consegna
+
+2. Implementazione del backend (Node + Express)
+Ho creato un server http Express (server.js), collegato direttamente alle rotte grazie all'uso di app.use():
+- si mette in ascolto sulla porta 3001
+- riceve le richieste http (GET, POST, PUT, DELETE) efettuate tramite l'uso di Thunder Client
+- applica le funzione middleware
+- inoltra le richieste alle route giuste
+- risponde con i dati JSON
+
+3. Creazione del modello Mongoose (Record.js)
+definito un modello per i vinili, con i campi: titolo, artista, anno, genere, prezzo, URL immagine, quantità e connesso il server con il database (db.js)
+
+4. Definizione delle API per i vinili
+implementate le operazioni REST di base (records.js):
+- GET 
+- PUT
+
+5. Aggiunta dei prodotti nel database
+aggiunti i primi vinili per testare il funzionamento del database e dell'applicazione
+
+DA FARE:
+1. completare tutte le API REST;
+2. creare l’interfaccia React;
+3. integrare frontend ↔ backend;
+4. aggiungere sicurezza e autenticazione;
+5. eseguire test;
+6. preparare documentazione e consegna.
