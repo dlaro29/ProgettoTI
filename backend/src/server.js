@@ -6,6 +6,13 @@ const connectDB = require('./config/db');
 
 //import delle rotte dei vinili
 const recordRoutes = require('./routes/records');
+//import delle rotte per l'autenticazione
+const authRoutes = require('./routes/auth');
+//import delle rotte per il carrello
+const cartRoutes = require('./routes/cart');
+//import delle rotte per gli ordini
+const orderRoutes = require('./routes/order');
+const { authRequired } = require('./middleware/authmiddleware');
 
 //creazione dell'app express
 const app = express();
@@ -22,13 +29,19 @@ app.get('/api/health', (req, res) => {
     res.json({ status: 'ok', message: 'Backend is running' });
 });
 
+//rotta per l'autenticazione
+app.use('/api/auth', authRoutes);
 //rotta per i vinili
 app.use('/api/records', recordRoutes);
+//rotta per il carrello
+app.use('/api/cart', cartRoutes);
+//rotta per gli ordini
+app.use('/api/orders', orderRoutes);
 
-//porta di ascolto default 3000
+//porta di ascolto default 3001
 const PORT = process.env.PORT || 3001;
 
 //avvio del server
 app.listen(PORT, () => {
-    console.log("Server beckend in ascolto sulla porta " + PORT);
+    console.log("Server backend in ascolto sulla porta " + PORT);
 });
