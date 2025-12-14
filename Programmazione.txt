@@ -25,8 +25,50 @@ implementate le operazioni REST di base (records.js):
 5. Aggiunta dei prodotti nel database
 aggiunti i primi vinili per testare il funzionamento del database e dell'applicazione
 
+6. completate le API REST necessarie
+auth.js gestisce la rotta che registra/login utenti:
+- legge i dati dal body
+- controlla se l'email è già esistente
+- crea un nuovo utente
+- lo salva nel database
+- genera un token JWT per tenerlo loggato
+- risponde al client con token + dati utente
+stessa cosa per i login
+aggiunti GET, PUT e DELETE per i prodotti
+cart.js gestisce la rotta del carrello di ogni utente:
+- il cart è un array di oggetti (record, quantity)
+- le API permettono di aggiungere/modificare e rimuovere i prodotti
+
+LE API FANNO DA TRAMITE TRA FRONTEND E  DATABASE:
+- ricevono la richiesta dal server (React, Thunder Client)
+- legge o modifica i dati nel database (MongoDB)
+- risponde al frontend con dati in formato JSON
+
+7. Fixati errori nei codici --> test funzionanti
+- registrazione OK, token:
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTMxYjc2MTkwZmRmYWYwMTdlYjRiOGUiLCJyb2xlIjoiY3VzdG9tZXIiLCJpYXQiOjE3NjQ4NjU4ODksImV4cCI6MTc2NTQ3MDY4OX0.lOoc9utP5HJW44Q9jFwufW7Dgl-ku6nMexvox92BiuI
+- login OK
+- inserimento tramite admin OK (aggiornato utente da customer ad admin tramite MongoDB Compass): header "Authorization" con il token dell'admin
+- ricerca vinile specifico tramite id OK: 6931b9fc00a8c2030672649e
+- aggiunta vinile nel carrello OK
+- visualizzare il carrello dell'utente OK
+- cancellazione vinile dal carrello OK
+- creazione di un ordine (POST): "in elaborazione" OK
+- visualizzazione ordini con utente OK
+
+8. Installazione React vite:
+- collegamento .env tra frontend e backend
+- creazione Home dei vinili
+- creazione pagine record detail
+- creazione pagine accesso
+- aggiunta al carrello di un articolo
+- visualizzazione carrello e procedimento ordine
+- pagine Order con checkout e totale da pagare + conferma ordine
 DA FARE:
-1. completare tutte le API REST;
+1. i miei ordini e rendirizzare utente a myorders una volta confermato un ordine
+
+
+DA FARE:
 2. creare l’interfaccia React;
 3. integrare frontend ↔ backend;
 4. aggiungere sicurezza e autenticazione;

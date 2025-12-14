@@ -10,7 +10,10 @@ const router = express.Router();
 router.get('/', authRequired, async (req, res) => {
     try {
         //certa l'utente che fa fatto richiesta
-        const user = await User.findById(req.user.id).populate('cart.record'); //populate per ottenere i dettagli dei record nel carrello
+        const user = await User.findById(req.user.id).populate({
+          path: "cart.record",
+          select: "title artist price imageUrl"
+        }); //populate per ottenere i dettagli dei record nel carrello
         //controllo se l'utente esiste
         if (!user) { return res.status(404).json({ message: 'Utente non trovato' }); }
         res.json(user.cart);

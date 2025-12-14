@@ -44,6 +44,8 @@ router.post('/register', async (req, res) => {
 //Login utente
 router.post('/login', async (req, res) => {
     try {
+        console.log("BODY RICEVUTO:", req.body);
+
         const { email, password } = req.body;
 
         //controllo dati utente
