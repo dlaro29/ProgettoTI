@@ -44,3 +44,9 @@ LIMITI
 -	Simulazione dei pagamenti di conferma ordine
 -	Spedizioni simulate tramite uno stato dell’ordine (“in lavorazione”, “in consegna”)
 -	Numero di prodotti limitato per semplicità di test
+
+GIT:
+git status
+git add .
+git commit -m "..."
+git push

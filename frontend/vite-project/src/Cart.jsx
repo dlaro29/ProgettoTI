@@ -1,73 +1,114 @@
 import { useEffect, useState } from "react";
-import { apiFetch } from "./api/api";
 import { Link } from "react-router-dom";
+import { apiFetch } from "./api/api";
 
-//pagina carrello
 function Cart() {
-    const [cart, setCart] = useState([]);
-    const [error, setError] = useState("");
-    const [loading, setLoading] = useState(true);
+  const [cart, setCart] = useState([]);
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(true);
 
-    //carica carrello dal backend
-    useEffect(() => {
-        const loadCart = async () => {
-            setError("");
-            setLoading(true);
+  const loadCart = async () => {
+    setError("");
+    setLoading(true);
 
-            //controllo presenza del token
-            const token = localStorage.getItem("token");
-            if(!token) {
-                setError("Devi effettuare il login per vedere il carrello");
-                return;
-            }
+    try {
+      const data = await apiFetch("/cart");
+      setCart(Array.isArray(data) ? data : []);
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
 
-            try {
-                const data = await apiFetch("/cart", { auth: true });
-                console.log("Risposta GET /cart:", data);
-                setCart(Array.isArray(data) ? data: []);
-            } catch (err) {
-                console.error("Errore GET /cart:", err);
-                setError(err.message);
-            } finally { setLoading(false) }
-        };
+  useEffect(() => {
+    loadCart();
+  }, []);
 
-        loadCart();
-    }, []);
+  // Aggiorna la quantità di un record nel carrello (PUT /api/cart/update)
+  const setQuantity = async (recordId, newQty) => {
+    setError("");
 
-    //mostra prodotti nel carrello
-    return (
-        <div>
-            <h1>Carrello</h1>
+    // Se la quantità scende a 0 o meno, rimuovo l'articolo
+    if (newQty <= 0) {
+      try {
+        await apiFetch(`/cart/remove/${recordId}`, { method: "DELETE"});
+        await loadCart();
+      } catch (err) {
+        setError(err.message);
+      }
+      return;
+    }
 
-            {loading && <p>Caricamento carrello...</p>}
-            {error && <p style={{ color: "red" }}>{error}</p>}
-            {!loading && !error && cart.length == 0 && <p>Carrello vuoto</p>}
-            {!loading && !error && cart.length > 0 && (
-                <>
-                <ul>
-                    {cart.map((item, idx) => {
-                        const record = item.record; //record popolato
-                        return (
-                        <li key={record?._id || item._id || idx}>
-                            <strong>{record?.title || "Titolo non disponibile"}</strong>
-                            {" - "}
-                            {record?.artist || "Artista non disponibile"}
-                            {" - €"}
-                            {item.record?.price ?? "?"}
-                            {" - quantità: "}
-                            {item.quantity ?? 1}
-                        </li>
-                        );
-                    })}
-                </ul>
+    try {
+      await apiFetch("/cart/update", {
+        method: "PUT",
+        body: { recordId, quantity: newQty }
+      });
+      await loadCart();
+    } catch (err) {
+      setError(err.message);
+    }
+  };
 
-                <Link to="/order">
-                    <button>Procedi all'ordine</button>
-                </Link>
-                </>
-            )}
-        </div>
-    );
+  // Rimuove tutta la riga (DELETE /api/cart/remove/:recordId)
+  const removeItem = async (recordId) => {
+    setError("");
+    try {
+      await apiFetch(`/cart/remove/${recordId}`, { method: "DELETE"});
+      await loadCart();
+    } catch (err) {
+      setError(err.message);
+    }
+  };
+
+  return (
+    <div>
+      <h1>Carrello</h1>
+
+      {loading && <p>Caricamento carrello...</p>}
+      {error && <p style={{ color: "red" }}>{error}</p>}
+
+      {!loading && !error && cart.length === 0 && <p>Carrello vuoto</p>}
+
+      {!loading && !error && cart.length > 0 && (
+        <>
+          <ul>
+            {cart.map((item, idx) => {
+              const rec = item.record;
+              const recordId = rec?._id;
+              const qty = item.quantity ?? 1;
+
+              return (
+                <li key={recordId || item._id || idx} style={{ marginBottom: 10 }}>
+                  <strong>{rec?.title || "Titolo non disponibile"}</strong>
+                  {" – "}
+                  {rec?.artist || "Artista non disponibile"}
+                  {" – €"}
+                  {rec?.price ?? "?"}
+                  {" — "}
+
+                  {/* Controlli quantità */}
+                  <button onClick={() => setQuantity(recordId, qty - 1)}>-</button>
+                  <span style={{ margin: "0 8px" }}>{qty}</span>
+                  <button onClick={() => setQuantity(recordId, qty + 1)}>+</button>
+
+                  {/* Rimozione totale opzionale */}
+                  <button style={{ marginLeft: 10 }} onClick={() => removeItem(recordId)}>
+                    Rimuovi
+                  </button>
+                </li>
+              );
+            })}
+          </ul>
+
+          <Link to="/order">
+            <button>Procedi all'ordine</button>
+          </Link>
+        </>
+      )}
+    </div>
+  );
 }
 
 export default Cart;

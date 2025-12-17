@@ -1,0 +1,326 @@
+[
+  {
+    "title": "The Dark Side of the Moon",
+    "artist": "Pink Floyd",
+    "year": 1973,
+    "genre": "Progressive Rock",
+    "price": 34.99,
+    "stock": 10,
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/en/3/3b/Dark_Side_of_the_Moon.png",
+    "description": "Concept album iconico dei Pink Floyd, incentrato su tempo, alienazione e follia, con un flusso musicale continuo e sperimentale.",
+    "tracks": [
+      "Speak to Me",
+      "Breathe",
+      "On the Run",
+      "Time",
+      "The Great Gig in the Sky",
+      "Money",
+      "Us and Them",
+      "Any Colour You Like",
+      "Brain Damage",
+      "Eclipse"
+    ]
+  },
+  {
+    "title": "Abbey Road",
+    "artist": "The Beatles",
+    "year": 1969,
+    "genre": "Rock",
+    "price": 32.99,
+    "stock": 8,
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/en/4/42/Beatles_-_Abbey_Road.jpg",
+    "description": "Ultimo album registrato dai Beatles, celebre per la produzione impeccabile e il medley del lato B.",
+    "tracks": [
+      "Come Together",
+      "Something",
+      "Maxwell’s Silver Hammer",
+      "Oh! Darling",
+      "Octopus’s Garden",
+      "Here Comes the Sun",
+      "Because",
+      "You Never Give Me Your Money",
+      "Sun King",
+      "The End"
+    ]
+  },
+  {
+    "title": "Nevermind",
+    "artist": "Nirvana",
+    "year": 1991,
+    "genre": "Grunge",
+    "price": 29.99,
+    "stock": 12,
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/en/b/b7/NirvanaNevermindalbumcover.jpg",
+    "description": "Album simbolo del grunge che ha portato il rock alternativo nel mainstream.",
+    "tracks": [
+      "Smells Like Teen Spirit",
+      "In Bloom",
+      "Come as You Are",
+      "Breed",
+      "Lithium",
+      "Polly",
+      "Drain You",
+      "Something in the Way"
+    ]
+  },
+  {
+    "title": "Back in Black",
+    "artist": "AC/DC",
+    "year": 1980,
+    "genre": "Hard Rock",
+    "price": 27.99,
+    "stock": 15,
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/6/6e/Acdc_backinblack_cover.jpg",
+    "description": "Album tributo a Bon Scott, uno dei dischi hard rock più venduti di sempre.",
+    "tracks": [
+      "Hells Bells",
+      "Shoot to Thrill",
+      "Back in Black",
+      "You Shook Me All Night Long",
+      "Rock and Roll Ain't Noise Pollution"
+    ]
+  },
+  {
+    "title": "Kind of Blue",
+    "artist": "Miles Davis",
+    "year": 1959,
+    "genre": "Jazz",
+    "price": 31.99,
+    "stock": 6,
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/en/9/9c/MilesDavisKindofBlue.jpg",
+    "description": "Capolavoro del jazz modale e uno degli album più influenti di sempre.",
+    "tracks": [
+      "So What",
+      "Freddie Freeloader",
+      "Blue in Green",
+      "All Blues",
+      "Flamenco Sketches"
+    ]
+  },
+  {
+    "title": "Thriller",
+    "artist": "Michael Jackson",
+    "year": 1982,
+    "genre": "Pop",
+    "price": 33.99,
+    "stock": 20,
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/en/5/55/Michael_Jackson_-_Thriller.png",
+    "description": "L’album più venduto di tutti i tempi, che ha ridefinito il pop.",
+    "tracks": [
+      "Wanna Be Startin' Somethin'",
+      "Thriller",
+      "Beat It",
+      "Billie Jean",
+      "Human Nature"
+    ]
+  },
+  {
+    "title": "OK Computer",
+    "artist": "Radiohead",
+    "year": 1997,
+    "genre": "Alternative Rock",
+    "price": 30.99,
+    "stock": 9,
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/en/a/a1/Radiohead.okcomputer.albumart.jpg",
+    "description": "Album seminale sull’alienazione tecnologica e sociale.",
+    "tracks": [
+      "Airbag",
+      "Paranoid Android",
+      "Subterranean Homesick Alien",
+      "Karma Police"
+    ]
+  },
+  {
+    "title": "Led Zeppelin IV",
+    "artist": "Led Zeppelin",
+    "year": 1971,
+    "genre": "Rock",
+    "price": 28.99,
+    "stock": 11,
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/en/2/26/Led_Zeppelin_-_Led_Zeppelin_IV.jpg",
+    "description": "Album iconico contenente alcuni dei brani più celebri della band.",
+    "tracks": [
+      "Black Dog",
+      "Rock and Roll",
+      "Stairway to Heaven",
+      "Going to California"
+    ]
+  },
+  {
+    "title": "After Hours",
+    "artist": "The Weeknd",
+    "year": 2020,
+    "genre": "Synth-pop / R&B",
+    "price": 39.99,
+    "stock": 20,
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/en/c/c1/The_Weeknd_-_After_Hours.png",
+    "description": "Viaggio notturno tra synth-pop e R&B, con atmosfere cupe e cinematografiche.",
+    "tracks": [
+      "Alone Again",
+      "Too Late",
+      "Hardest to Love",
+      "Scared to Live",
+      "Snowchild",
+      "Escape from LA",
+      "Heartless",
+      "Faith",
+      "Blinding Lights",
+      "In Your Eyes",
+      "Save Your Tears",
+      "After Hours",
+      "Until I Bleed Out"
+    ]
+  },
+  {
+    "title": "Dawn FM",
+    "artist": "The Weeknd",
+    "year": 2022,
+    "genre": "Synth-pop / Dance-pop",
+    "price": 39.99,
+    "stock": 20,
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/en/b/b9/The_Weeknd_-_Dawn_FM.png",
+    "description": "Album-concept strutturato come una stazione radio immaginaria.",
+    "tracks": [
+      "Dawn FM",
+      "Gasoline",
+      "How Do I Make You Love Me?",
+      "Take My Breath",
+      "Sacrifice",
+      "Out of Time",
+      "Here We Go... Again",
+      "Best Friends",
+      "Is There Someone Else?",
+      "Starry Eyes",
+      "Less Than Zero",
+      "Phantom Regret by Jim"
+    ]
+  },
+  {
+    "title": "My Beautiful Dark Twisted Fantasy",
+    "artist": "Kanye West",
+    "year": 2010,
+    "genre": "Hip-hop",
+    "price": 44.99,
+    "stock": 15,
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/en/f/f0/My_Beautiful_Dark_Twisted_Fantasy.jpg",
+    "description": "Produzione massimalista e visione artistica ambiziosa.",
+    "tracks": [
+      "Dark Fantasy",
+      "Gorgeous",
+      "POWER",
+      "All of the Lights",
+      "Monster",
+      "Devil in a New Dress",
+      "Runaway",
+      "Hell of a Life",
+      "Lost in the World"
+    ]
+  },
+  {
+    "title": "Yeezus",
+    "artist": "Kanye West",
+    "year": 2013,
+    "genre": "Experimental Hip-hop",
+    "price": 39.99,
+    "stock": 15,
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/en/0/03/Yeezus_album_cover.png",
+    "description": "Album aggressivo e sperimentale, influenzato da industrial ed elettronica.",
+    "tracks": [
+      "On Sight",
+      "Black Skinhead",
+      "I Am a God",
+      "New Slaves",
+      "Hold My Liquor",
+      "Blood on the Leaves",
+      "Bound 2"
+    ]
+  },
+  {
+    "title": "The College Dropout",
+    "artist": "Kanye West",
+    "year": 2004,
+    "genre": "Hip-hop",
+    "price": 39.99,
+    "stock": 15,
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/en/a/a3/Kanyewest_collegedropout.jpg",
+    "description": "Debutto che mescola soul campionato e critica sociale.",
+    "tracks": [
+      "We Don't Care",
+      "All Falls Down",
+      "Spaceship",
+      "Jesus Walks",
+      "Slow Jamz",
+      "Through the Wire",
+      "Family Business",
+      "Last Call"
+    ]
+  },
+  {
+    "title": "Good Kid, M.A.A.D City",
+    "artist": "Kendrick Lamar",
+    "year": 2012,
+    "genre": "Hip-hop",
+    "price": 39.99,
+    "stock": 18,
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/en/9/93/KendrickGKMC.jpg",
+    "description": "Concept album narrativo sull’adolescenza a Compton.",
+    "tracks": [
+      "Sherane a.k.a Master Splinter's Daughter",
+      "Bitch, Don't Kill My Vibe",
+      "Backseat Freestyle",
+      "The Art of Peer Pressure",
+      "Money Trees",
+      "Poetic Justice",
+      "good kid",
+      "m.A.A.d city",
+      "Swimming Pools (Drank)",
+      "Sing About Me, I'm Dying of Thirst",
+      "Compton"
+    ]
+  },
+  {
+    "title": "To Pimp a Butterfly",
+    "artist": "Kendrick Lamar",
+    "year": 2015,
+    "genre": "Hip-hop / Jazz Rap",
+    "price": 44.99,
+    "stock": 18,
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/en/f/f6/Kendrick_Lamar_-_To_Pimp_a_Butterfly.png",
+    "description": "Album complesso e politicamente carico, con influenze jazz e funk.",
+    "tracks": [
+      "Wesley's Theory",
+      "King Kunta",
+      "These Walls",
+      "u",
+      "Alright",
+      "For Sale?",
+      "Momma",
+      "How Much a Dollar Cost",
+      "The Blacker the Berry",
+      "i",
+      "Mortal Man"
+    ]
+  },
+  {
+    "title": "DAMN.",
+    "artist": "Kendrick Lamar",
+    "year": 2017,
+    "genre": "Hip-hop",
+    "price": 39.99,
+    "stock": 18,
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/en/5/51/Kendrick_Lamar_-_Damn.png",
+    "description": "Album costruito su contrasti morali e sonori.",
+    "tracks": [
+      "BLOOD.",
+      "DNA.",
+      "ELEMENT.",
+      "FEEL.",
+      "PRIDE.",
+      "HUMBLE.",
+      "LOVE.",
+      "XXX.",
+      "FEAR.",
+      "DUCKWORTH."
+    ]
+  }
+]

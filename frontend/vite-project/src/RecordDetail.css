@@ -1,0 +1,276 @@
+.rdPage {
+  width: 100%;
+}
+
+/* Breadcrumb */
+.rdCrumb {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9rem;
+  margin: 6px 0 16px;
+}
+
+.rdCrumb a {
+  color: #111;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.rdCrumbSep {
+  opacity: 0.6;
+}
+
+.rdCrumbMuted {
+  color: #666;
+}
+
+.rdCrumbCurrent {
+  color: #111;
+  font-weight: 700;
+}
+
+/* Griglia a due colonne */
+.rdGrid {
+  display: grid;
+  grid-template-columns: minmax(340px, 520px) 1fr;
+  gap: 34px;
+  align-items: start;
+}
+
+/* Colonna immagine (stile “product page”) */
+.rdMediaCol {
+  position: sticky;
+  top: 92px; /* lascia spazio alla navbar sticky */
+}
+
+.rdCoverBox {
+  width: 100%;
+  max-width: 520px;
+  aspect-ratio: 1 / 1; /* copertina sempre quadrata */
+  border: 1px solid #e8e8e8;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.rdCover {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* NON cover */
+  display: block;
+  background: #fff;
+}
+
+/* Thumbnails */
+.rdThumbs {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.rdThumbBtn {
+  border: 1px solid #e8e8e8;
+  background: #fff;
+  border-radius: 10px;
+  padding: 6px;
+  cursor: pointer;
+}
+
+.rdThumb {
+  width: 74px;
+  height: 74px;
+  object-fit: cover;
+  display: block;
+  border-radius: 8px;
+}
+
+/* Colonna info */
+.rdInfoCol {
+  min-width: 0;
+}
+
+.rdTitleBlock {
+  padding-bottom: 14px;
+  border-bottom: 1px solid #efefef;
+  margin-bottom: 18px;
+}
+
+.rdArtist {
+  font-family: Oswald, Inter, sans-serif;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.rdTitle {
+  margin: 6px 0 0;
+  font-size: 1.6rem;
+  line-height: 1.15;
+}
+
+.rdMetaLine {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #333;
+  font-size: 0.95rem;
+}
+
+.rdMetaSep {
+  opacity: 0.5;
+}
+
+.rdLabel,
+.rdSku {
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: 0.85rem;
+  opacity: 0.9;
+}
+
+/* Riga acquisto (formato/prezzo + qty + CTA) */
+.rdBuyRow {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 14px;
+  align-items: center;
+  padding: 14px 0 18px;
+  border-bottom: 1px solid #efefef;
+}
+
+.rdFormat {
+  display: flex;
+  align-items: baseline;
+  gap: 18px;
+}
+
+.rdFormatName {
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.rdPrice {
+  font-weight: 800;
+  font-size: 1.1rem;
+}
+
+.rdQty {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+  height: 40px;
+}
+
+.rdQtyBtn {
+  width: 40px;
+  height: 40px;
+  border: 0;
+  background: #fff;
+  cursor: pointer;
+  font-size: 1.1rem;
+}
+
+.rdQtyInput {
+  width: 52px;
+  height: 40px;
+  border: 0;
+  text-align: center;
+  outline: none;
+  font-weight: 700;
+}
+
+.rdCta {
+  height: 40px;
+  padding: 0 18px;
+  border: 0;
+  border-radius: 10px;
+  background: #111;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
+.rdCta:hover {
+  opacity: 0.95;
+}
+
+/* Info rapide */
+.rdFacts {
+  padding: 14px 0 6px;
+  display: grid;
+  gap: 8px;
+  color: #111;
+}
+
+/* Sezione descrizione */
+.rdSection {
+  margin-top: 16px;
+}
+
+.rdSectionTitle {
+  margin: 0 0 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-family: Oswald, Inter, sans-serif;
+}
+
+.rdDesc {
+  margin: 0;
+  color: #222;
+  line-height: 1.55;
+}
+
+.rdOk { color: green; margin-top: 12px; }
+.rdErr { color: red; margin-top: 12px; }
+.rdTracklist {
+  margin: 0;
+  padding-left: 18px;
+  display: grid;
+  gap: 8px;
+}
+
+.rdTrack {
+  display: flex;
+  gap: 8px;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.rdPos {
+  margin-right: 10px;
+  opacity: 0.75;
+  white-space: nowrap;
+}
+
+/* Responsive */
+@media (max-width: 980px) {
+  .rdGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .rdMediaCol {
+    position: relative;
+    top: auto;
+  }
+
+  .rdBuyRow {
+    grid-template-columns: 1fr;
+    align-items: stretch;
+  }
+
+  .rdQty {
+    width: fit-content;
+  }
+
+  .rdCta {
+    width: 100%;
+  }
+}

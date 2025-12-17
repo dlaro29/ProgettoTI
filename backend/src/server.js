@@ -3,6 +3,7 @@ const express = require('express');
 const cors = require('cors');
 require('dotenv').config();
 const connectDB = require('./config/db');
+const path = require("path");
 
 //import delle rotte dei vinili
 const recordRoutes = require('./routes/records');
@@ -16,7 +17,8 @@ const { authRequired } = require('./middleware/authmiddleware');
 
 //creazione dell'app express
 const app = express();
-
+//express recupera i file delle copertine nella cartella uploads
+app.use("/uploads", express.static(path.join(__dirname, "..", "uploads")));
 //middleware: funzioni che processano le richieste in arrivo
 app.use(cors()); //abilita cors
 app.use(express.json()); //permette di leggere JSON

@@ -77,7 +77,7 @@ router.post('/add', authRequired, async (req, res) => {
 router.put('/update', authRequired, async (req, res) => {
     try {
         const { recordId, quantity } = req.body;
-        const user = await User.findById(req.user.user.id);
+        const user = await User.findById(req.user.id);
         if (!user) { return res.status(404).json({ message: 'Utente non trovato' }); }
 
         //cerco l'articolo nel carrello da aggiornare

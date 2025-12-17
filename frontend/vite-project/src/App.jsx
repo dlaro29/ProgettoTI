@@ -4,19 +4,29 @@ import RecordDetail from "./RecordDetail";
 import Login from "./Login";
 import Cart from "./Cart"
 import Order from "./Order";
+import MyOrders from "./MyOrders";
+import ProtectedRoute from "./components/ProtectedRoute";
+import Layout from "./components/Layout";
 
 //componente principale dell'app
 function App() {
   return (
-    //così app decide quale componente mostrare in base alla rotta
+    //così App decide quale componente mostrare in base alla rotta
     <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/records/:id" element={<RecordDetail />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/cart" element={<Cart />} />
-      <Route path="order" element={<Order />} />
+      <Route path="/" element={<Layout />} >
+        <Route index element={<Home />} />
+        <Route path="records/:id" element={<RecordDetail />} />
+        <Route path="login" element={<Login />} />
+
+        {/* rotte protette */}
+        <Route element={<ProtectedRoute />} >
+          <Route path="cart" element={<Cart />} />
+          <Route path="order" element={<Order />} />
+          <Route path="myorders" element={<MyOrders />} />
+        </Route>
+      </Route>
     </Routes>
   );
 }
 
-export default App
+export default App;

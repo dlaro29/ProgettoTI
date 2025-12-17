@@ -1,0 +1,122 @@
+.navWrap {
+  width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 2000;
+}
+
+/* barra gialla sopra */
+.navTop {
+  background: var(--yellow);
+  color: #000000;
+  font-size: 0.85rem;
+}
+
+.navTopInner,
+.navMainInner {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.navTop a {
+  color: #000000;
+  text-decoration: none;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.navTopRight {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.navTopBtn {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+  padding: 8px 10px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.navTopBtn:hover {
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+/* barra nera principale */
+.navMain {
+  background: var(--black);
+  color: #ffffff;
+}
+
+.brand {
+  text-decoration: none;
+  color: #ffffff;
+  font-family: Oswald, Inter, sans-serif;
+  font-size: 1.25rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-right: 18px;
+}
+
+.navMainLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  align-items: center;
+}
+
+.navMainLinks a {
+  color: #ffffff;
+  text-decoration: none;
+  font-family: Oswald, Inter, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 0.95rem;
+  opacity: 0.92;
+}
+
+.navMainLinks a:hover {
+  opacity: 1;
+}
+
+.navMainRight {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.navIconBtn {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+  padding: 8px 10px;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.navIconBtn:hover {
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+.navSearch {
+  width: 100%;       
+  max-width: 520px;      
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.25);
+  background: rgba(255,255,255,0.10);
+  color: #fff;
+}
+
+.navSearch::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}

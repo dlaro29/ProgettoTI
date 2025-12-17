@@ -1,0 +1,169 @@
+.homeWrap {
+  padding: 0; /* padding lo fa il Layout */
+}
+
+.homeTitle {
+  font-family: Oswald, Inter, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 1.4rem;
+  margin: 8px 0 14px;
+}
+
+.errorText {
+  color: red;
+  margin: 0 0 12px;
+}
+
+.searchInput {
+  padding: 12px 14px;
+  width: 100%;
+  max-width: 520px;
+  margin-bottom: 18px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 0.95rem;
+}
+
+.searchInput:focus {
+  outline: none;
+  border-color: #111;
+}
+
+/* Griglia responsive “shop” */
+.catalogGrid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(180px, 1fr));
+  gap: 22px;
+  row-gap: 34px;
+}
+
+/* Card pulita */
+.productCard {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Copertina quadrata */
+.productMedia {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid #e6e6e6;
+  border-radius: 5px;
+}
+
+.productImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Overlay "View Product" */
+.productOverlayBtn {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid #111;
+  padding: 10px 14px;
+  text-decoration: none;
+  color: #111;
+  font-family: Oswald, Inter, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 0.85rem;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+.productMedia:hover .productOverlayBtn {
+  opacity: 1;
+}
+
+.productLink {
+  text-decoration: none;
+  color: inherit;
+}
+
+.productTitle {
+  font-weight: 800;
+  line-height: 1.2;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.productMeta {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.productArtist {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.productPrice {
+  font-weight: 700;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+
+.hero {
+  width: 100%;
+  height: 360px;           
+  border-radius: 14px;
+  overflow: hidden;
+  position: relative;
+  margin: 6px 0 22px;
+
+  /* immagine di sfondo */
+  background-image: url("vinyl.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 28px 26px;
+
+  /* overlay scuro per leggibilità testo */
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,0.55),
+    rgba(0,0,0,0.10),
+    rgba(0,0,0,0.00)
+  );
+}
+
+.heroTitle {
+  margin: 0;
+  color: #fff;
+  font-family: Oswald, Inter, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 3rem;
+  line-height: 1.05;
+}
+
+.heroSubtitle {
+  margin: 10px 0 0;
+  color: rgba(255,255,255,0.9);
+  font-size: 1rem;
+  max-width: 520px;
+}
+

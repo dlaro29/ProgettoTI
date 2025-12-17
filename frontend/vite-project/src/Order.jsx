@@ -17,15 +17,8 @@ function Order() {
             setError("");
             setLoading(true);
 
-            const token = localStorage.getItem("token");
-            if(!token) {
-                setError("Devi effettuare il login per confermanre l'ordine");
-                setLoading(false);
-                return;
-            }
-
             try {
-                const data = await apiFetch("/cart", { auth: true});
+                const data = await apiFetch("/cart");
                 setCart(Array.isArray(data) ? data: []);
             } catch (err) {
                 setError(err.message);
@@ -40,12 +33,12 @@ function Order() {
         setMessage("");
 
         try {
-            await apiFetch("/orders", { method: "POST", auth: true });
+            await apiFetch("/orders", { method: "POST"});
             setMessage("Ordine confermato!");
 
             //dopo 1s torna al carrello
             setTimeout(() => {
-                navigate("/cart");
+                navigate("/myorders");
             }, 1000);
         } catch (err) {
             setError(err.message);
