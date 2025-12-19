@@ -1,0 +1,325 @@
+[
+  {
+    "title": "Bad",
+    "artist": "Michael Jackson",
+    "year": 1987,
+    "genre": "Pop",
+    "price": 33.99,
+    "stock": 15,
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/en/5/51/Michael_Jackson_-_Bad.png",
+    "description": "Album pop-funk che ha consolidato il dominio di Michael Jackson negli anni ’80.",
+    "tracks": [
+      "Bad",
+      "The Way You Make Me Feel",
+      "Speed Demon",
+      "Liberian Girl",
+      "Just Good Friends",
+      "Smooth Criminal",
+      "Man in the Mirror",
+      "Dirty Diana",
+      "Another Part of Me",
+      "Leave Me Alone"
+    ]
+  },
+  {
+    "title": "Purple Rain",
+    "artist": "Prince",
+    "year": 1984,
+    "genre": "Pop",
+    "price": 34.99,
+    "stock": 12,
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/en/9/9c/Princepurplerain.jpg",
+    "description": "Colonna sonora iconica tra rock, funk e pop.",
+    "tracks": [
+      "Let's Go Crazy",
+      "Take Me with U",
+      "The Beautiful Ones",
+      "When Doves Cry",
+      "I Would Die 4 U",
+      "Baby I'm a Star",
+      "Purple Rain"
+    ]
+  },
+  {
+    "title": "1989",
+    "artist": "Taylor Swift",
+    "year": 2014,
+    "genre": "Pop",
+    "price": 36.99,
+    "stock": 18,
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/en/f/f6/Taylor_Swift_-_1989.png",
+    "description": "Transizione definitiva al pop mainstream.",
+    "tracks": [
+      "Welcome to New York",
+      "Blank Space",
+      "Style",
+      "Out of the Woods",
+      "Shake It Off",
+      "Bad Blood",
+      "Wildest Dreams",
+      "Clean"
+    ]
+  },
+  {
+    "title": "The Eminem Show",
+    "artist": "Eminem",
+    "year": 2002,
+    "genre": "Hip-hop",
+    "price": 39.99,
+    "stock": 20,
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/en/3/35/The_Eminem_Show.jpg",
+    "description": "Uno degli album rap più venduti di sempre.",
+    "tracks": [
+      "White America",
+      "Cleanin' Out My Closet",
+      "Without Me",
+      "Sing for the Moment",
+      "Superman",
+      "Till I Collapse"
+    ]
+  },
+  {
+    "title": "Graduation",
+    "artist": "Kanye West",
+    "year": 2007,
+    "genre": "Hip-hop",
+    "price": 37.99,
+    "stock": 16,
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/en/7/70/Graduation_%28album%29.jpg",
+    "description": "Album che fonde hip-hop ed elettronica.",
+    "tracks": [
+      "Good Morning",
+      "Stronger",
+      "I Wonder",
+      "Good Life",
+      "Flashing Lights",
+      "Can't Tell Me Nothing",
+      "Homecoming"
+    ]
+  },
+  {
+    "title": "Discovery",
+    "artist": "Daft Punk",
+    "year": 2001,
+    "genre": "Electronic/Funk",
+    "price": 34.99,
+    "stock": 14,
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/en/a/ae/Daft_Punk_-_Discovery.jpg",
+    "description": "Album elettronico iconico e influentissimo.",
+    "tracks": [
+      "One More Time",
+      "Aerodynamic",
+      "Digital Love",
+      "Harder, Better, Faster, Stronger",
+      "Something About Us"
+    ]
+  },
+  {
+    "title": "Random Access Memories",
+    "artist": "Daft Punk",
+    "year": 2013,
+    "genre": "Electronic/Funk",
+    "price": 39.99,
+    "stock": 14,
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/en/a/a7/Random_Access_Memories.jpg",
+    "description": "Omaggio moderno alla musica analogica.",
+    "tracks": [
+      "Give Life Back to Music",
+      "Get Lucky",
+      "Lose Yourself to Dance",
+      "Instant Crush",
+      "Touch"
+    ]
+  },
+  {
+    "title": "21",
+    "artist": "Adele",
+    "year": 2011,
+    "genre": "Pop",
+    "price": 35.99,
+    "stock": 20,
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/en/1/1b/Adele_-_21.png",
+    "description": "Album soul-pop di enorme successo globale.",
+    "tracks": [
+      "Rolling in the Deep",
+      "Rumour Has It",
+      "Turning Tables",
+      "Someone Like You",
+      "Set Fire to the Rain"
+    ]
+  },
+  {
+    "title": "Future Nostalgia",
+    "artist": "Dua Lipa",
+    "year": 2020,
+    "genre": "Pop",
+    "price": 34.99,
+    "stock": 16,
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/en/f/f5/Dua_Lipa_-_Future_Nostalgia_%28Official_Album_Cover%29.png",
+    "description": "Pop moderno con influenze disco anni ’80.",
+    "tracks": [
+      "Don't Start Now",
+      "Physical",
+      "Levitating",
+      "Pretty Please",
+      "Hallucinate"
+    ]
+  },
+  {
+    "title": "Hounds of Love",
+    "artist": "Kate Bush",
+    "year": 1985,
+    "genre": "Pop",
+    "price": 31.99,
+    "stock": 9,
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/en/7/7e/Katebushhoundsoflove.png",
+    "description": "Capolavoro pop sperimentale anni ’80.",
+    "tracks": [
+      "Running Up That Hill",
+      "Hounds of Love",
+      "The Big Sky",
+      "Cloudbusting"
+    ]
+  },
+  {
+    "title": "Born This Way",
+    "artist": "Lady Gaga",
+    "year": 2011,
+    "genre": "Pop",
+    "price": 35.99,
+    "stock": 17,
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/en/0/0e/Born_This_Way_album_cover.png",
+    "description": "Pop elettronico con messaggi di inclusività.",
+    "tracks": [
+      "Born This Way",
+      "Judas",
+      "The Edge of Glory",
+      "You and I"
+    ]
+  },
+  {
+    "title": "The Fame",
+    "artist": "Lady Gaga",
+    "year": 2008,
+    "genre": "Pop",
+    "price": 32.99,
+    "stock": 14,
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/en/c/c0/The_Fame_album_cover.png",
+    "description": "Album di debutto che ha lanciato Lady Gaga.",
+    "tracks": [
+      "Just Dance",
+      "Poker Face",
+      "LoveGame",
+      "Paparazzi"
+    ]
+  },
+  {
+    "title": "Goodbye Yellow Brick Road",
+    "artist": "Elton John",
+    "year": 1973,
+    "genre": "Pop",
+    "price": 36.99,
+    "stock": 10,
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/en/8/86/Goodbye_Yellow_Brick_Road.jpg",
+    "description": "Doppio album iconico del pop-rock anni ’70.",
+    "tracks": [
+      "Funeral for a Friend",
+      "Bennie and the Jets",
+      "Goodbye Yellow Brick Road",
+      "Saturday Night’s Alright"
+    ]
+  },
+  {
+    "title": "Dangerous",
+    "artist": "Michael Jackson",
+    "year": 1991,
+    "genre": "Pop",
+    "price": 34.99,
+    "stock": 18,
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/en/8/89/Michael_Jackson_-_Dangerous.png",
+    "description": "Album che unisce pop, new jack swing e R&B.",
+    "tracks": [
+      "Jam",
+      "Black or White",
+      "Remember the Time",
+      "Heal the World"
+    ]
+  },
+  {
+    "title": "The Chronic",
+    "artist": "Dr. Dre",
+    "year": 1992,
+    "genre": "Hip-hop",
+    "price": 39.99,
+    "stock": 13,
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/en/1/19/Dr.DreTheChronic.jpg",
+    "description": "Album fondamentale del gangsta rap West Coast.",
+    "tracks": [
+      "Nuthin' but a 'G' Thang",
+      "Let Me Ride",
+      "Dre Day"
+    ]
+  },
+  {
+    "title": "SOS",
+    "artist": "SZA",
+    "year": 2022,
+    "genre": "Synth-pop/R&B",
+    "price": 37.99,
+    "stock": 15,
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/en/2/2c/SZA_-_SOS.png",
+    "description": "R&B moderno con forte impronta emotiva.",
+    "tracks": [
+      "SOS",
+      "Kill Bill",
+      "Snooze",
+      "Nobody Gets Me"
+    ]
+  },
+  {
+    "title": "Revolver",
+    "artist": "The Beatles",
+    "year": 1966,
+    "genre": "Rock",
+    "price": 34.99,
+    "stock": 9,
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/en/1/16/Revolver.jpg",
+    "description": "Album sperimentale che ha rivoluzionato il rock.",
+    "tracks": [
+      "Taxman",
+      "Eleanor Rigby",
+      "Yellow Submarine",
+      "Tomorrow Never Knows"
+    ]
+  },
+  {
+    "title": "Astroworld",
+    "artist": "Travis Scott",
+    "year": 2018,
+    "genre": "Hip-hop",
+    "price": 38.99,
+    "stock": 16,
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/en/0/0b/Astroworld_by_Travis_Scott.jpg",
+    "description": "Album hip-hop moderno di enorme successo.",
+    "tracks": [
+      "STARGAZING",
+      "SICKO MODE",
+      "STOP TRYING TO BE GOD"
+    ]
+  },
+  {
+    "title": "Faith",
+    "artist": "George Michael",
+    "year": 1987,
+    "genre": "Pop",
+    "price": 33.99,
+    "stock": 11,
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/en/8/8d/Faith_album_cover.jpg",
+    "description": "Album pop-funk simbolo degli anni ’80.",
+    "tracks": [
+      "Faith",
+      "Father Figure",
+      "I Want Your Sex"
+    ]
+  }
+]

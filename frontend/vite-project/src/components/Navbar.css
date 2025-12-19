@@ -72,6 +72,67 @@
   gap: 22px;
 }
 
+/* FILTRI  */
+.navDropdown {
+  position: relative;
+}
+
+.navDropdownLabel {
+  font-family: Oswald, Inter, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 1rem;
+  color: #fff;
+  cursor: pointer;
+  opacity: 0.92;
+}
+
+.navDropdownLabel:hover {
+  opacity: 1;
+}
+
+.navDropdownMenu {
+  position: absolute;
+  top: 130%;
+  left: 0;
+  background: var(--yellow);
+  color: #111;
+  min-width: 200px;
+  border-radius: 8px;
+  padding: 6px 0;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+  display: none;
+  flex-direction: column;
+  z-index: 3000;
+}
+
+.navDropdown::after {
+  content: "";
+  position:absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 10px;
+}
+
+.navDropdown:hover .navDropdownMenu, .navDropdownMenu:hover {
+  display: flex;
+}
+
+.navDropdownMenu button {
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 10px 16px;
+  text-align: left;
+  font-family: Inter, sans-serif;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+.navDropdownMenu button:hover {
+  background: #f2f2f2;
+}
 /* LOGO */
 .brand {
   text-decoration: none;
@@ -104,7 +165,7 @@
   font-family: Oswald, Inter, sans-serif;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  font-size: 0.95rem;
+  font-size: 1rem;
   opacity: 0.9;
 }
 
@@ -116,7 +177,7 @@
    SEARCH A DESTRA
 ========================= */
 .navMainRight {
-  margin-left:364px;           /* FIX CHIAVE */
+  margin-left:320px;           /* FIX CHIAVE */
   display: flex;
   align-items: center;
   width: 420px;                /* larghezza realistica */

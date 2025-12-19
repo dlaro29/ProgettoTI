@@ -10,35 +10,62 @@ const BACKEND_URL = API_URL.replace(/\/api\/?$/, "");
 function Home() {
   //stato che contiene l'elenco dei vinili ricevuti dal backend
   const [records, setRecords] = useState([]);
-
   //stato per errori
   const [error, setError] = useState("");
 
   //stato per la ricerca
   const [sp] = useSearchParams();
   const search = sp.get("search") || "";
+  const genre = sp.get("genre");
+  const yearFrom = sp.get("yearFrom");
+  const yearTo = sp.get("yearTo");
 
   //effetto per caricare i vinili
   useEffect(() => {
     const fetchRecords = async () => {
       try {
-        const data = await apiFetch(`/records?search=${encodeURIComponent(search)}`);
+        const params = new URLSearchParams();
+        if (search) params.set("search", search);
+        if (genre) params.set("genre", genre);
+        if (yearFrom) params.set("yearFrom", yearFrom);
+        if (yearTo) params.set("yearTo", yearTo);
+
+        const data = await apiFetch(`/records?${params.toString()}`);
         setRecords(data);
       } catch (err) {
         setError(err.message);
       }
     };
-
     fetchRecords();
-  }, [search]);
+  }, [search, genre, yearFrom, yearTo]);
+
+  let heroImage = "/public/home.jpg";
+  let heroTitle = "Catalogo Vinili";
+  let heroSubtitle = "Scopri novità, classici e rarità";
+
+  if (genre) {
+    heroImage = "/public/genre.jpg";
+    heroTitle = genre;
+    heroSubtitle = "Scopri i dischi del genere musicale"
+  }
+  if (yearFrom) {
+    heroImage = "/public/artist.jpg";
+    heroTitle = yearTo
+      ? `Anni ${yearFrom.toString().slice(0, 3)}0`
+      : `Dal ${yearFrom} in poi`;
+    heroSubtitle = "Scopri i dischi dell'annata";
+  }
 
   return (
     <div className="homeWrap">
 
-        <section className="hero">
-          <div className="heroOverlay">
-            <h1 className="heroTitle">Catalogo Vinili</h1>
-            <p className="heroSubtitle">Scopri novità, classici e rarità.</p>
+        <section 
+          className="hero"
+          style={{ backgroundImage: `url(${heroImage})`}}
+          >
+            <div className="heroOverlay">
+              <h1 className="heroTitle">{heroTitle}</h1>
+              <p className="heroSubtitle">{heroSubtitle}</p>
           </div>
         </section>
 

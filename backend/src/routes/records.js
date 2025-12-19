@@ -4,24 +4,28 @@ const Record = require('../models/Record');
 const {authRequired, adminRequired} = require('../middleware/authmiddleware');
 
 //GET
-//ottenere tutti i vinili + filtri
+//ottenere tutti i vinili + coninazione di filtri (Home)
 router.get('/', async (req, res) => {
     try {
         //estraggo i parametri di filtro dalla query string
-        const {search, genre, minPrice, maxPrice} = req.query;
+        const {search, genre, minPrice, maxPrice, yearFrom, yearTo } = req.query;
         const filter = {};
-        //in bas ai ai parametri, costruisco il filtro
+        //in bas ai ai parametri, costruisco il filtro (ricerca testuale)
         if (search) {
             filter.$or = [
                 { title: { $regex: search, $options: 'i' } },
                 { artist: { $regex: search, $options: 'i' } }
             ];
         }
-        //applico altri filtri se presenti
+        //applico altri filtri nella Navbar
         if (genre) { filter.genre = genre; }
         if (minPrice) { filter.price = { ...filter.price, $gte: Number(minPrice) }; }
-        if (maxPrice) { filter.price = { ...filter.price, $lte: Number(maxPrice) }; }
-        //eseguo la query con i filtri
+        if (maxPrice) { filter.price = { ...filter.price, $lte: Number(maxPrice) }; }        //eseguo la query con i filtri
+        if (yearFrom || yearTo) {
+            filter.year = {};
+            if (yearFrom) filter.year.$gte = Number(yearFrom);
+            if (yearTo) filter.year.$lte = Number (yearTo);
+        }
         const records = await Record.find(filter);
         res.json(records);
     } catch (err) {
@@ -29,7 +33,27 @@ router.get('/', async (req, res) => {
     }
 });
 
-//GET per singolo vinile
+//GET per generi (Navbar)
+router.get("/meta/genres", async (req, res) => {
+    try {
+        const genres = await Record.distinct("genre");
+        res.json(genres);
+    } catch (err) {
+        res.status(500).json({ message: "Errore nel recupero dei generi "});
+    }
+});
+
+//GET per artisti
+router.get("/meta/artists", async (req, res) => {
+    try {
+        const artists = await Record.distinct("artist");
+        res.json(artists);
+    } catch (err) {
+        res.status(500).json({ message: "Errore nel recupero degli artisti "});
+    }
+});
+
+//GET per singolo vinile (Navbar)
 router.get('/:id', async (req, res) => {
     try {
         //trovo il vinile per id
