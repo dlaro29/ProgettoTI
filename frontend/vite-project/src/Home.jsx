@@ -69,7 +69,7 @@ function Home() {
                     "https://via.placeholder.com/600x600?text=No+Image";
                 }}
               />
-
+              
                 <Link className="productOverlayBtn" to={`/records/${record._id}`}>
                   View Product
                 </Link>

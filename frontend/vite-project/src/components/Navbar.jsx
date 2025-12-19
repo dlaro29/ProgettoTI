@@ -1,6 +1,8 @@
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { logoutLocal } from "../api/api";
 import "./Navbar.css";
+import logo from "../assets/logo.png";
+import searchIcon from "../assets/lente.svg";
 
 export default function Navbar() {
   const navigate = useNavigate();
@@ -49,8 +51,10 @@ export default function Navbar() {
       {/* navbar nera */}
       <div className="navMain">
         <div className="navMainInner">
+          <div className="navMainLeft">
           <Link className="brand" to="/">
-            Vinili
+            <img src={logo} alt="Logo" className="navLogo" />
+            <span className="brandText">Vinili</span>
           </Link>
 
           <div className="navMainLinks">
@@ -63,16 +67,20 @@ export default function Navbar() {
           </div>
 
           <div className="navMainRight">
-            <input 
-              className="navSearch"
-              type="text"
-              placeholder="Cerca per titolo, artista..."
-              value={searchValue}
-              onChange={(e) => onSearchChange(e.target.value)}
-              />
+            <div className="navSearchWrap">
+              <img src={searchIcon} alt="Search" className="navSearchIcon" />
+              <input 
+                className="navSearch"
+                type="text"
+                placeholder="Cerca per titolo, artista..."
+                value={searchValue}
+                onChange={(e) => onSearchChange(e.target.value)}
+                />
+            </div>
           </div>
         </div>
       </div>
     </div>
+  </div>
   );
 }
