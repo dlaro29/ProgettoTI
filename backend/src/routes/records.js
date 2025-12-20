@@ -43,16 +43,6 @@ router.get("/meta/genres", async (req, res) => {
     }
 });
 
-//GET per artisti
-router.get("/meta/artists", async (req, res) => {
-    try {
-        const artists = await Record.distinct("artist");
-        res.json(artists);
-    } catch (err) {
-        res.status(500).json({ message: "Errore nel recupero degli artisti "});
-    }
-});
-
 //GET per singolo vinile (Navbar)
 router.get('/:id', async (req, res) => {
     try {

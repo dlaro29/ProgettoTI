@@ -177,7 +177,7 @@
    SEARCH A DESTRA
 ========================= */
 .navMainRight {
-  margin-left:320px;           /* FIX CHIAVE */
+  margin-left:10px;           /* FIX CHIAVE */
   display: flex;
   align-items: center;
   width: 420px;                /* larghezza realistica */

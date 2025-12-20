@@ -21,6 +21,12 @@ export default function Navbar() {
     { label: "2010", from: 2010, to: 2019 },
     { label: "2020+", from: 2020, to: null }
   ];
+  const priceRanges = [
+  { label: "Sotto 20€", min: 0, max: 19.99 },
+  { label: "20€ - 30€", min: 20, max: 30 },
+  { label: "30€ - 40€", min: 30, max: 40 },
+  { label: "Oltre 40€", min: 40, max: null }
+  ];
 
   //filtri per popup
   useEffect(() => {
@@ -87,8 +93,7 @@ export default function Navbar() {
                     onClick={() => {
                       const next = new URLSearchParams(sp);
                       next.set("genre", g);
-                      next.delete("yearFrom");
-                      next.delete("yearTo");
+
                       setSp(next);
                       navigate(`/?${next.toString()}`);
                     }}
@@ -112,7 +117,6 @@ export default function Navbar() {
                     if (y.to) next.set("yearTo", y.to);
                     else next.delete("yearTo");
 
-                    next.delete("artist");
                     setSp(next);
                     navigate(`/?${next.toString()}`);
                   }}
@@ -122,9 +126,80 @@ export default function Navbar() {
               ))}
             </div>
           </div>
+          
+          {/* Filtro prezzo */}
+          <div className="navDropdown">
+            <span className="navDropdownLabel">Prezzo</span>
+            <div className="navDropdownMenu">
+              {priceRanges.map((p) => (
+                <button
+                  key={p.label}
+                  onClick={() => {
+                    const next = new URLSearchParams(sp);
+                    next.set("minPrice", p.min);
+                    if(p.max !== null) next.set("maxPrice", p.max);
+                    else next.delete("maxPrice");
 
+                    setSp(next);
+                    navigate(`/?${next.toString()}`);
+                  }}
+                  >
+                    {p.label}
+                  </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Ordinamento */}
+          <div className="navDropdown">
+            <span className="navDropdownLabel">Ordina</span>
+            <div className="navDropdownMenu">
+                <button
+                  onClick={() => {
+                    const next = new URLSearchParams(sp);
+                    next.set("sort", "price-asc");
+                    setSp(next);
+                    navigate(`/?${next.toString()}`);
+                  }}
+                  >
+                    Prezzo ↓
+                  </button>
+
+                  <button
+                    onClick={() => {
+                      const next = new URLSearchParams(sp);
+                      next.set("sort", "price-desc");
+                      setSp(next);
+                      navigate(`/?${next.toString()}`);
+                    }}
+                    >
+                      Prezzo ↑
+                    </button>
+
+                    <button
+                      onClick={() => {
+                        const next = new URLSearchParams(sp);
+                        next.set("sort", "year-desc");
+                        setSp(next);
+                        navigate(`/?${next.toString()}`);
+                      }}
+                      >
+                        Più recenti
+                      </button>
+
+                      <button
+                        onClick={() => {
+                          const next = new URLSearchParams(sp);
+                          next.set("sort", "year-asc");
+                          setSp(next);
+                          navigate(`/?${next.toString()}`);
+                        }}
+                        >
+                         Meno recenti
+                      </button>
+              </div>
+            </div>
             <Link to="/">Nuovi Arrivi</Link>
-            <Link to="/">Preordini</Link>
           </div>
 
 

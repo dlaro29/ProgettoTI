@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { apiFetch } from "./api/api";
-import { Link, useSearchParams } from "react-router-dom";
+import { Link, useSearchParams, useNavigate } from "react-router-dom";
 import "./Home.css";
 
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3001/api";
@@ -14,11 +14,15 @@ function Home() {
   const [error, setError] = useState("");
 
   //stato per la ricerca
-  const [sp] = useSearchParams();
+  const [sp, setSp] = useSearchParams();
+  const navigate = useNavigate();
   const search = sp.get("search") || "";
   const genre = sp.get("genre");
   const yearFrom = sp.get("yearFrom");
   const yearTo = sp.get("yearTo");
+  const minPrice = sp.get("minPrice");
+  const maxPrice = sp.get("maxPrice");
+  const sort = sp.get("sort");
 
   //effetto per caricare i vinili
   useEffect(() => {
@@ -29,6 +33,8 @@ function Home() {
         if (genre) params.set("genre", genre);
         if (yearFrom) params.set("yearFrom", yearFrom);
         if (yearTo) params.set("yearTo", yearTo);
+        if (minPrice) params.set("minPrice", minPrice);
+        if (maxPrice) params.set("maxPrice", maxPrice);
 
         const data = await apiFetch(`/records?${params.toString()}`);
         setRecords(data);
@@ -37,7 +43,7 @@ function Home() {
       }
     };
     fetchRecords();
-  }, [search, genre, yearFrom, yearTo]);
+  }, [search, genre, yearFrom, yearTo, minPrice, maxPrice]);
 
   let heroImage = "/public/home.jpg";
   let heroTitle = "Catalogo Vinili";
@@ -56,6 +62,13 @@ function Home() {
     heroSubtitle = "Scopri i dischi dell'annata";
   }
 
+  //prezzo/anno creascente o decrescente
+  const sortedRecords = [...records];
+  if (sort === "price-asc") sortedRecords.sort((a, b) => a.price - b.price);
+  if (sort === "price-desc") sortedRecords.sort((a, b) => b.price - a.price);
+  if (sort === "year-asc") sortedRecords.sort((a, b) => a.year - b.year);
+  if (sort === "year-desc") sortedRecords.sort((a, b) => b.year - a.year);
+
   return (
     <div className="homeWrap">
 
@@ -69,14 +82,66 @@ function Home() {
           </div>
         </section>
 
-    {/*errore se presente*/}
-    {error && <p className="errorText">{error}</p>}
+      {/*errore se presente*/}
+      {error && <p className="errorText">{error}</p>}
+
+      {/* Filtri attivi */}
+      {(genre || yearFrom || minPrice) && (
+        <div className="activeFilters">
+          <span className="activeFiltersLabel">Filtri attivi:</span>
+
+          {genre && (
+            <button
+              className="filterChip"
+              onClick={() => {
+                const next = new URLSearchParams(sp);
+                next.delete("genre");
+                setSp(next);
+                navigate(`/?${next.toString()}`);
+              }}
+              >
+              {genre} X
+              </button>
+          )}
+
+          {yearFrom && (
+            <button
+              className="filterChip"
+              onClick={() => {
+                const next = new URLSearchParams(sp);
+                next.delete("yearFrom");
+                next.delete("yearTo");
+                setSp(next);
+                navigate(`/?${next.toString()}`);
+              }}
+              >
+                Anni {yearFrom.toString().slice(0, 3)}0 X
+              </button>
+          )}
+
+          {minPrice && (
+            <button
+              className="filterChip"
+              onClick={() => {
+                const next = new URLSearchParams(sp);
+                next.delete("minPrice");
+                next.delete("maxPrice");
+                setSp(next);
+                navigate(`/?${next.toString()}`);
+              }}
+              >
+                {maxPrice ? `${minPrice}€-${maxPrice}€` : `>${minPrice}€`} X
+              </button>
+          )}
+        </div>
+      )}
+
       {/* lista vinili */}
       {records.length === 0 ? (
         <p>Nessun vinile disponibile</p>
       ) : (
         <div className="catalogGrid">
-          {records.map((record) => (
+          {sortedRecords.map((record) => (
             <div key={record._id} className="productCard">
               <div className="productMedia">
               <img
