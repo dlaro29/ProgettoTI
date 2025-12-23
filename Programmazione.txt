@@ -70,10 +70,9 @@ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTMxYjc2MTkwZmRmYWYwMTdlYjR
 Sistemato auth: true per rendere più semplice il codice e autorizzare sempre l'utente 
 9. aggiornato codice per aggiungere barra di ricerca e funzione che solo se effettuato login si può accedere a cart, myorders
 
+10. Implementati filtri per genere, anni e prezzo + ordinamento personalizzato
+
 DA FARE:
-1. sistemare visibilità della home
-2. aggiungere più vinili al catalogo
-3. sistemare indirizzamenti home
 4. sistemare pagina prodotto e aggiungere un'altra immagine se possibile
 
 DA FARE:
