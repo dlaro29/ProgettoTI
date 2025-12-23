@@ -75,15 +75,14 @@ Sistemato auth: true per rendere più semplice il codice e autorizzare sempre l'
 11. Aggiunta sezione Account con raggruppamento dati customer, ordini e logout e aggiunta barra inferiore con dati del sito + icone
 
 12. Migliorata RecordDetail page + carrello dinamico e consigliati
+13. migliorata Cart page + dinamicità quantità prodotti
+14. modificato login e register in un unico file
 
 DA FARE:
-- migliorare Cart page + dinamicità quantità prodotti
 - migliorare Account page
 - migliorare MyOrders
 
 DA FARE:
-2. creare l’interfaccia React;
-3. integrare frontend ↔ backend;
-4. aggiungere sicurezza e autenticazione;
+4. aggiungere admin
 5. eseguire test;
 6. preparare documentazione e consegna.

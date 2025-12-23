@@ -52,7 +52,7 @@ export default function Navbar() {
 
   //aggiornamento carrello all'aggiunta
   useEffect(() => {
-    const updateCartCount = async () => {
+    const updateCartCount = async () => { 
       try {
         const cart = await apiFetch("/cart");
         const totalQty = cart.reduce(

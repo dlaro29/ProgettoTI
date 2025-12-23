@@ -30,6 +30,7 @@ function Account() {
 
   const handleLogout = () => {
     logoutLocal();
+    window.dispatchEvent(new Event("cart-updated"));
     navigate("/");
   };
 

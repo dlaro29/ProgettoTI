@@ -10,6 +10,7 @@ export function getToken() {
 export function logoutLocal() {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
+    window.dispatchEvent(new Event("cart-updated"));
 }
 //funzione per effettuare una chiamata API con gestione del token
 export async function apiFetch(
