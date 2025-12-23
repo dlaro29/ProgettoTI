@@ -64,6 +64,9 @@ function RecordDetail() {
       });
       window.dispatchEvent(new Event("cart-updated"));
       setMessage("Vinile aggiunto al carrello");
+      setTimeout(() => {
+        setMessage("");
+      }, 2000);
     } catch (err) {
       setError(err.message);
     }

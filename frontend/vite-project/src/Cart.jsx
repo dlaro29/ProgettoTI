@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { apiFetch } from "./api/api";
+import "./Cart.css";
 
 function Cart() {
   const [cart, setCart] = useState([]);
@@ -28,12 +29,12 @@ function Cart() {
   // Aggiorna la quantità di un record nel carrello (PUT /api/cart/update)
   const setQuantity = async (recordId, newQty) => {
     setError("");
-
     // Se la quantità scende a 0 o meno, rimuovo l'articolo
     if (newQty <= 0) {
       try {
         await apiFetch(`/cart/remove/${recordId}`, { method: "DELETE"});
         await loadCart();
+        window.dispatchEvent(new Event("cart-updated"));
       } catch (err) {
         setError(err.message);
       }
@@ -46,6 +47,7 @@ function Cart() {
         body: { recordId, quantity: newQty }
       });
       await loadCart();
+      window.dispatchEvent(new Event("cart-updated"));
     } catch (err) {
       setError(err.message);
     }
@@ -57,56 +59,84 @@ function Cart() {
     try {
       await apiFetch(`/cart/remove/${recordId}`, { method: "DELETE"});
       await loadCart();
+      window.dispatchEvent(new Event("cart-updated"));
     } catch (err) {
       setError(err.message);
     }
   };
 
   return (
-    <div>
-      <h1>Carrello</h1>
+    <div className="cartPage">
+      {/* HEADER */}
+      <div className="cartHeader">
+        <h1>Carrello</h1>
+      </div>
 
-      {loading && <p>Caricamento carrello...</p>}
-      {error && <p style={{ color: "red" }}>{error}</p>}
+        {/* CONTENUTO */}
+        <div className="cartContent">
+          {loading && <p>Caricamento carrello...</p>}
+          {error && <p className="cartError">{error}</p>}
+          {!loading && cart.length === 0 && <p>Il carrello è vuoto</p>}
 
-      {!loading && !error && cart.length === 0 && <p>Carrello vuoto</p>}
+          {cart.map((item, idx) => {
+            const rec = item.record;
+            const qty = item.quantity ?? 1;
 
-      {!loading && !error && cart.length > 0 && (
-        <>
-          <ul>
-            {cart.map((item, idx) => {
-              const rec = item.record;
-              const recordId = rec?._id;
-              const qty = item.quantity ?? 1;
+            return (
+              <div className="cartItem" key={rec?._id || idx}>
+                <img
+                  className="cartImg"
+                  src={rec?.imageUrl}
+                  alt={rec?.title}
+                />
 
-              return (
-                <li key={recordId || item._id || idx} style={{ marginBottom: 10 }}>
-                  <strong>{rec?.title || "Titolo non disponibile"}</strong>
-                  {" – "}
-                  {rec?.artist || "Artista non disponibile"}
-                  {" – €"}
-                  {rec?.price ?? "?"}
-                  {" — "}
+                <div className="cartInfo">
+                  <h3>{rec?.title}</h3>
+                  <p className="cartMeta">Vinyl - LP</p>
 
-                  {/* Controlli quantità */}
-                  <button onClick={() => setQuantity(recordId, qty - 1)}>-</button>
-                  <span style={{ margin: "0 8px" }}>{qty}</span>
-                  <button onClick={() => setQuantity(recordId, qty + 1)}>+</button>
+                  <div className="cartQty">
+                    <button onClick={() => setQuantity(rec._id, qty - 1)}>-</button>
+                    <span>{qty}</span>
+                    <button onClick={() => setQuantity(rec._id, qty + 1)}>+</button>
+                  </div>
+                </div>
 
-                  {/* Rimozione totale opzionale */}
-                  <button style={{ marginLeft: 10 }} onClick={() => removeItem(recordId)}>
-                    Rimuovi
+                <div className="cartRight">
+                  <span className="cartPrice">
+                    € {(rec.price * qty).toFixed(2)}
+                  </span>
+                  <button
+                    className="cartRemove"
+                    onClick={() => removeItem(rec._id)}
+                  >
+                    X
                   </button>
-                </li>
-              );
-            })}
-          </ul>
+                </div>
+              </div>
+            );
+          })}
+        </div>
 
-          <Link to="/order">
-            <button>Procedi all'ordine</button>
-          </Link>
-        </>
-      )}
+        {/* FOOTER */}
+        {cart.length > 0 && (
+          <div className="cartFooter">
+            <div className="cartRow">
+              <span>Spedizione</span>
+              <span className="muted">Calcolata al checkout</span>
+            </div>
+
+            <div className="cartRow total">
+              <span>Totale</span>
+              <span>
+                € {cart.reduce((sum, i) => sum + i.record.price * i.quantity, 0).toFixed(2)}
+              </span>
+            </div>
+
+            <Link to="/order" className="checkoutBtn">
+              Checkout
+            </Link>
+          </div>
+        )}
     </div>
   );
 }

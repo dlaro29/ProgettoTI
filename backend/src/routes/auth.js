@@ -59,8 +59,9 @@ router.post('/register', async (req, res) => {
       }
     });
   } catch (err) {
+    console.error("ERRORE REGISTER:", err);
     res.status(500).json({
-      message: 'Errore nella registrazione',
+      message: "Errore nella registrazione",
       error: err.message
     });
   }
@@ -94,7 +95,7 @@ router.post('/login', async (req, res) => {
             token,
             user: { 
                 id: user._id, 
-                username: user.username, 
+                name: user.name, 
                 email: user.email, 
                 role: user.role 
             }

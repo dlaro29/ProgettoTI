@@ -110,7 +110,7 @@ export default function Navbar() {
               </div>
               </>
             ) : (
-              <Link to="/login" className="navAccount">
+              <Link to="/auth" className="navAccount">
                 <FaUserCircle />
                 Sign in
               </Link>

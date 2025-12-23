@@ -5,8 +5,8 @@ export default function ProtectedRoute() {
     const location = useLocation();
 
     if(!token) {
-        //reinderezza a /login
-        return <Navigate to="/login" replace state={{ from: location.pathname }} />;
+        //reinderezza a /auth
+        return <Navigate to="/auth" replace state={{ from: location.pathname }} />;
     }
 
     return <Outlet />; //renderezzi le rette "figlie"

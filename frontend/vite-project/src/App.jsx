@@ -1,13 +1,13 @@
 import { Route, Routes } from "react-router-dom";
 import Home from "./Home";
 import RecordDetail from "./RecordDetail";
-import Login from "./Login";
 import Cart from "./Cart"
 import Order from "./Order";
 import MyOrders from "./MyOrders";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Layout from "./components/Layout";
 import Account from "./Account";
+import Auth from "./Auth";
 
 //componente principale dell'app
 function App() {
@@ -17,7 +17,7 @@ function App() {
       <Route path="/" element={<Layout />} >
         <Route index element={<Home />} />
         <Route path="records/:id" element={<RecordDetail />} />
-        <Route path="login" element={<Login />} />
+        <Route path="auth" element={<Auth />} />
 
         {/* rotte protette */}
         <Route element={<ProtectedRoute />} >
