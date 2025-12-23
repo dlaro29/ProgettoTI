@@ -4,6 +4,7 @@ import "./Navbar.css";
 import logo from "../assets/logo.png";
 import searchIcon from "../assets/lente.svg";
 import { useEffect, useState } from "react";
+import { FaShoppingCart, FaUserCircle } from "react-icons/fa";
 
 export default function Navbar() {
   const navigate = useNavigate();
@@ -49,24 +50,40 @@ export default function Navbar() {
 
   return (
     <div className="navWrap">
-      {/* barra gialla sopra */}
+
+      {/* BARRA BLU SUPERIORE */}
       <div className="navTop">
         <div className="navTopInner">
+          <Link to="/">Licensing</Link>
           <Link to="/">Newsletter</Link>
+          <Link to="/">Contact Us</Link>
           <Link to="/">About</Link>
-
+          <Link to="/">Gift Cards</Link>
           <div className="navTopRight">
             {token ? (
               <>
-                <Link to="/myorders">My Orders</Link>
-                <button className="navTopBtn" onClick={handleLogout}>
-                  Logout
-                </button>
+              <div className="navAccountWrap">
+                <Link to="/account" className="navAccount">
+                  <FaUserCircle />
+                  <span>My Account</span>
+                </Link>
+
+                <div className="navAccountMenu">
+                  <button className="logoutItem" onClick={handleLogout}>
+                    ↪ Logout
+                  </button>
+                </div>
+              </div>
               </>
             ) : (
-              <Link to="/login">Sign in</Link>
+              <Link to="/login" className="navAccount">
+                <FaUserCircle />
+                Sign in
+              </Link>
             )}
-            <Link to="/cart">Cart</Link>
+            <Link to="/cart" className="navIconBtn" aria-label="Carrello">
+              <FaShoppingCart />
+            </Link>
           </div>
         </div>
       </div>
@@ -199,7 +216,19 @@ export default function Navbar() {
                       </button>
               </div>
             </div>
-            <Link to="/">Nuovi Arrivi</Link>
+
+            <Link 
+              to="/"
+              onClick={(e) => {
+                e.preventDefault();
+                const next = new URLSearchParams();
+                next.set("view", "new");
+                setSp(next);
+                navigate(`/?${next.toString()}`);
+              }}
+            >
+              Nuovi Arrivi
+            </Link>
           </div>
 
 

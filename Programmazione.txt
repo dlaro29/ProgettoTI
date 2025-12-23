@@ -72,8 +72,7 @@ Sistemato auth: true per rendere più semplice il codice e autorizzare sempre l'
 
 10. Implementati filtri per genere, anni e prezzo + ordinamento personalizzato
 
-DA FARE:
-4. sistemare pagina prodotto e aggiungere un'altra immagine se possibile
+11. Aggiunta sezione Account con raggruppamento dati customer, ordini e logout e aggiunta barra inferiore con dati del sito + icone
 
 DA FARE:
 2. creare l’interfaccia React;

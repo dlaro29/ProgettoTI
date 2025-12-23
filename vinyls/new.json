@@ -1,0 +1,172 @@
+[
+  {
+    "title": "The Tortured Poets Department",
+    "artist": "Taylor Swift",
+    "year": 2025,
+    "genre": "Pop",
+    "price": 39.99,
+    "stock": 25,
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/en/6/61/Taylor_Swift_-_The_Tortured_Poets_Department.png",
+    "description": "Album pop introspettivo che segna una nuova fase artistica di Taylor Swift.",
+    "tracks": [
+      "Fortnight",
+      "The Tortured Poets Department",
+      "My Boy Only Breaks His Favorite Toys",
+      "Down Bad",
+      "So Long, London"
+    ]
+  },
+  {
+    "title": "Hurry Up Tomorrow",
+    "artist": "The Weeknd",
+    "year": 2025,
+    "genre": "Synth-popR&B",
+    "price": 38.99,
+    "stock": 20,
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/en/3/3e/The_Weeknd_-_Hurry_Up_Tomorrow.png",
+    "description": "Capitolo conclusivo della trilogia iniziata con After Hours.",
+    "tracks": [
+      "Wake Me Up",
+      "Cry for Me",
+      "Take Me Back to LA",
+      "Open Hearts",
+      "Runaway"
+    ]
+  },
+  {
+    "title": "Moon Music",
+    "artist": "Coldplay",
+    "year": 2025,
+    "genre": "Pop",
+    "price": 36.99,
+    "stock": 18,
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/en/2/2e/Coldplay_-_Moon_Music.png",
+    "description": "Album melodico e atmosferico che continua il sound cosmico dei Coldplay.",
+    "tracks": [
+      "Moon Music",
+      "FeelsLikeImFallingInLove",
+      "We Pray",
+      "Jupiter",
+      "Aeterna"
+    ]
+  },
+  {
+    "title": "One Thing at a Time (Deluxe)",
+    "artist": "Morgan Wallen",
+    "year": 2025,
+    "genre": "Country",
+    "price": 34.99,
+    "stock": 15,
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/en/8/8b/Morgan_Wallen_-_One_Thing_at_a_Time.png",
+    "description": "Versione estesa di uno degli album country più ascoltati al mondo.",
+    "tracks": [
+      "Last Night",
+      "You Proof",
+      "Thought You Should Know",
+      "I Wrote the Book",
+      "Everything I Love"
+    ]
+  },
+  {
+    "title": "Radical Optimism",
+    "artist": "Dua Lipa",
+    "year": 2025,
+    "genre": "Pop",
+    "price": 37.99,
+    "stock": 22,
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/en/0/0b/Dua_Lipa_-_Radical_Optimism.png",
+    "description": "Album pop solare con influenze dance e psichedeliche.",
+    "tracks": [
+      "Training Season",
+      "Houdini",
+      "Illusion",
+      "End of an Era",
+      "Falling Forever"
+    ]
+  },
+  {
+    "title": "GNX",
+    "artist": "Kendrick Lamar",
+    "year": 2025,
+    "genre": "Hip-hop",
+    "price": 41.99,
+    "stock": 19,
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/en/5/5e/Kendrick_Lamar_-_GNX.png",
+    "description": "Album rap maturo e sperimentale, tra i più attesi dell'anno.",
+    "tracks": [
+      "Wacced Out Murals",
+      "Squabble Up",
+      "Reincarnated",
+      "Luther",
+      "TV Off"
+    ]
+  },
+  {
+    "title": "From Zero",
+    "artist": "Linkin Park",
+    "year": 2025,
+    "genre": "Rock",
+    "price": 39.49,
+    "stock": 17,
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/en/4/4b/Linkin_Park_-_From_Zero.png",
+    "description": "Ritorno discografico dei Linkin Park con nuove sonorità.",
+    "tracks": [
+      "The Emptiness Machine",
+      "Heavy Is the Crown",
+      "Cut the Bridge",
+      "Overflow",
+      "Good Things Go"
+    ]
+  },
+  {
+    "title": "Hit Me Hard and Soft",
+    "artist": "Billie Eilish",
+    "year": 2025,
+    "genre": "Pop",
+    "price": 36.49,
+    "stock": 21,
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/en/7/7a/Billie_Eilish_-_Hit_Me_Hard_and_Soft.png",
+    "description": "Album intimo e sperimentale con produzione minimalista.",
+    "tracks": [
+      "Skinny",
+      "Lunch",
+      "Chihiro",
+      "Birds of a Feather",
+      "Blue"
+    ]
+  },
+  {
+    "title": "I Said I Love You First",
+    "artist": "Selena Gomez",
+    "year": 2025,
+    "genre": "Pop",
+    "price": 34.99,
+    "stock": 14,
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/en/9/9d/Selena_Gomez_-_I_Said_I_Love_You_First.png",
+    "description": "Album pop emotivo che esplora temi di crescita personale.",
+    "tracks": [
+      "Single Soon",
+      "Love On",
+      "Younger and Hotter Than Me",
+      "Don't Wanna Cry",
+      "Call Me When You Break Up"
+    ]
+  },
+  {
+    "title": "Rebel Heart (2025 Edition)",
+    "artist": "Madonna",
+    "year": 2025,
+    "genre": "Pop",
+    "price": 38.49,
+    "stock": 12,
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/en/4/47/Madonna_-_Rebel_Heart.png",
+    "description": "Riedizione celebrativa di uno degli album più iconici di Madonna.",
+    "tracks": [
+      "Living for Love",
+      "Ghosttown",
+      "Bitch I'm Madonna",
+      "Devil Pray",
+      "Rebel Heart"
+    ]
+  }
+]

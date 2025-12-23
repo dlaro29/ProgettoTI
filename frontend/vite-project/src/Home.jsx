@@ -23,6 +23,7 @@ function Home() {
   const minPrice = sp.get("minPrice");
   const maxPrice = sp.get("maxPrice");
   const sort = sp.get("sort");
+  const view = sp.get("view");
 
   //effetto per caricare i vinili
   useEffect(() => {
@@ -45,6 +46,7 @@ function Home() {
     fetchRecords();
   }, [search, genre, yearFrom, yearTo, minPrice, maxPrice]);
 
+
   let heroImage = "/public/home.jpg";
   let heroTitle = "Catalogo Vinili";
   let heroSubtitle = "Scopri novità, classici e rarità";
@@ -62,8 +64,21 @@ function Home() {
     heroSubtitle = "Scopri i dischi dell'annata";
   }
 
+  if (view === "new") {
+    heroImage = "/public/new.jpg";
+    heroTitle = "Nuovi Arrivi";
+    heroSubtitle = "Le ultime uscite in vinile";
+  }
+
+  let visibleRecords = [...records];
+  if (view === "new") {
+    visibleRecords = visibleRecords.filter((r) => r.year >= 2025);
+  } else {
+    visibleRecords = visibleRecords.filter((r) => r.year < 2025);
+  }
+
   //prezzo/anno creascente o decrescente
-  const sortedRecords = [...records];
+  const sortedRecords = [...visibleRecords];
   if (sort === "price-asc") sortedRecords.sort((a, b) => a.price - b.price);
   if (sort === "price-desc") sortedRecords.sort((a, b) => b.price - a.price);
   if (sort === "year-asc") sortedRecords.sort((a, b) => a.year - b.year);
@@ -144,6 +159,15 @@ function Home() {
           {sortedRecords.map((record) => (
             <div key={record._id} className="productCard">
               <div className="productMedia">
+
+                {/* new badge */}
+                {record.year >= 2025 && (
+                  <span className="badgeNew">
+                    <img src="/src/assets/fire.svg" alt="" className="badgeIcon"/>
+                    NEW
+                  </span>
+                )}
+
               <img
                 className="productImg"
                 src={

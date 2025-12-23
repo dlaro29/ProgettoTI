@@ -7,6 +7,7 @@ import Order from "./Order";
 import MyOrders from "./MyOrders";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Layout from "./components/Layout";
+import Account from "./Account";
 
 //componente principale dell'app
 function App() {
@@ -22,7 +23,7 @@ function App() {
         <Route element={<ProtectedRoute />} >
           <Route path="cart" element={<Cart />} />
           <Route path="order" element={<Order />} />
-          <Route path="myorders" element={<MyOrders />} />
+          <Route path="account" element={<Account />} />
         </Route>
       </Route>
     </Routes>

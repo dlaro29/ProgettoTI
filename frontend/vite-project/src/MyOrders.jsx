@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { apiFetch } from "./api/api";
 
 //pagine dei miei ordini
-function MyOrders() {
+function MyOrders({ embedded = false }) {
   const [orders, setOrders] = useState([]);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
@@ -35,10 +35,11 @@ function MyOrders() {
   if (loading) return <p>Caricamento ordini...</p>;
   if (error) return <p style={{ color: "red" }}>{error}</p>;
 
-  if (orders.length == 0) {
+  if (orders.length === 0) {
     return (
       <div>
-        <h1>I miei ordini</h1>
+        {!embedded && <h1>I miei ordini</h1>}
+        {embedded && <h3>I miei ordini</h3>}
         <p>Non hai ancora effettuato ordini.</p>
       </div>
     );
@@ -46,7 +47,8 @@ function MyOrders() {
 
   return (
     <div>
-      <h1>I miei ordini</h1>
+      {!embedded && <h1>I miei ordini</h1>}
+      {embedded && <h3>I miei ordini</h3>}
 
       <ul>
         {orders.map((o) => {

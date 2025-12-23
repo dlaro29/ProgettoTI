@@ -16,6 +16,7 @@ function authRequired(req, res, next) {
       id: decoded.userId,   // userId preso dal token
       role: decoded.role    // ruolo (customer/admin)
     };
+    
     next();
   } catch (err) {
     return res.status(401).json({ message: 'Token non valido' });

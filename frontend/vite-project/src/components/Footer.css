@@ -1,0 +1,62 @@
+.footer {
+    background: #1b1b1b;
+    color: #eaeaea;
+    padding: 80px 40px;
+    margin-top: 80px;
+}
+
+.footerInner {
+    max-width: 1300px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 60px;
+}
+
+.footerCol h4 {
+    color: var(--blue);
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 18px;
+    letter-spacing: 0.05em;
+}
+
+.footerSubTitle {
+    margin-top: 30px;
+}
+
+.footerCol a {
+    display: block;
+    margin-bottom: 12px;
+    color: #d0d0d0;
+    font-size: 0.9rem;
+    text-decoration: none;
+}
+
+.footerCol a:hover {
+    color: #ffffff;
+}
+
+.paymentIcon span {
+    display: inline-block;
+    margin-right: 12px;
+    margin-top: 10px;
+    font-size: 0.85rem;
+    opacity: 0.8;
+}
+
+.socialIcons {
+    display: flex;
+    gap: 14px;
+    font-size: 1.2rem;
+    margin-top: 10px;
+}
+
+.socialIcons svg {
+    cursor: pointer;
+    color: #ffffff;
+}
+
+.socialIcons svg:hover {
+    color: var(--blue);
+}
