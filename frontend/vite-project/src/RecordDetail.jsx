@@ -12,19 +12,33 @@ function RecordDetail() {
   const [error, setError] = useState("");
   const [message, setMessage] = useState("");
   const [qty, setQty] = useState(1);
+  const [relatedRecords, setRelatedRecords] = useState([]);
 
   useEffect(() => {
-    const fetchRecord = async () => {
+    const fetchRecordAndRelated = async () => {
       try {
+        //vinile principale
         const data = await apiFetch(`/records/${id}`);
         setRecord(data);
+
+        //vinili consigliati
+        if (data.genre) {
+          const sameGenre = await apiFetch(
+            `/records?genre=${encodeURIComponent(data.genre)}`);
+          
+            //esclusione del vinile corrente + limite a 5
+          const filtered = sameGenre.filter(r => r._id !== data._id).slice(0, 5);
+          setRelatedRecords(filtered);
+        }
       } catch (err) {
         setError(err.message);
       }
     };
-    fetchRecord();
+
+    fetchRecordAndRelated();
   }, [id]);
 
+  //immagine principale
   const imgSrc = useMemo(() => {
     if (!record?.imageUrl) return "https://via.placeholder.com/900x900?text=Vinile";
     return record.imageUrl.startsWith("http")
@@ -32,6 +46,7 @@ function RecordDetail() {
       : `${BACKEND_URL}${record.imageUrl}`;
   }, [record]);
 
+  //aggiunta al carrello
   async function addToCart() {
     setError("");
     setMessage("");
@@ -47,10 +62,12 @@ function RecordDetail() {
         method: "POST",
         body: { recordId: id, quantity: qty }
       });
+      window.dispatchEvent(new Event("cart-updated"));
       setMessage("Vinile aggiunto al carrello");
     } catch (err) {
       setError(err.message);
     }
+    
   }
 
   if (!record) return <p>Caricamento in corso...</p>;
@@ -66,6 +83,7 @@ function RecordDetail() {
       </div>
 
       <div className="rdGrid">
+        {/* COLONNA SINISTRA */}
         <div className="rdMediaCol">
           <div className="rdCoverBox">
             <img
@@ -77,8 +95,23 @@ function RecordDetail() {
               }}
             />
           </div>
+          {/* TRACKLIST */}
+          {Array.isArray(record.tracks) && record.tracks.length > 0 && (
+            <div className="rdTracklistBox">
+              <h3 className="rdTracklistTitle">Tracklist Preview</h3>
+              <ol className="rdTracklistLarge">
+                {record.tracks.map((t, i) => (
+                  <li key={i}>
+                    <span className="rdTrackIndex">{i + 1}.</span>
+                    {t}
+                  </li>
+                ))}
+              </ol>
+            </div>
+          )}
         </div>
-
+        
+        {/* COLONNA DESTRA */}
         <div className="rdInfoCol">
           <div className="rdTitleBlock">
             <div className="rdArtist">{record.artist}</div>
@@ -92,7 +125,12 @@ function RecordDetail() {
             </div>
 
             <div className="rdQty">
-              <button className="rdQtyBtn" onClick={() => setQty(q => Math.max(1, q - 1))}>−</button>
+              <button 
+                className="rdQtyBtn" 
+                onClick={() => setQty(q => Math.max(1, q - 1))}
+                >
+                  -
+              </button>
               <input
                 className="rdQtyInput"
                 value={qty}
@@ -101,10 +139,17 @@ function RecordDetail() {
                   setQty(Number.isFinite(v) ? Math.max(1, v) : 1);
                 }}
               />
-              <button className="rdQtyBtn" onClick={() => setQty(q => q + 1)}>+</button>
+              <button 
+                className="rdQtyBtn"
+                onClick={() => setQty(q => q + 1)}
+              >
+                +
+              </button>
             </div>
 
-            <button className="rdCta" onClick={addToCart}>Aggiungi al carrello</button>
+            <button className="rdCta" onClick={addToCart}>
+              Aggiungi al carrello
+            </button>
           </div>
 
           <div className="rdFacts">
@@ -117,34 +162,44 @@ function RecordDetail() {
             <h3 className="rdSectionTitle">Descrizione</h3>
             <p className="rdDesc">{record.description || "Nessuna descrizione disponibile."}</p>
           </div>
-          <div className="detailContent">
-            <p><strong>Prezzo:</strong> €{record.price}</p>
-            <p><strong>Anno:</strong> {record.year}</p>
-            <p><strong>Genere:</strong> {record.genre}</p>
-
-
-            {/* TRACKLIST */}
-            {Array.isArray(record.tracks) && record.tracks.length > 0 && (
-              <>
-                <h3>Tracklist</h3>
-                <ol className="trackList">
-                  {record.tracks.map((t, i) => (
-                    <li key={i}>{t}</li>
-                  ))}
-                </ol>
-              </>
-            )}
-
-
-            {message && <p className="okMsg">{message}</p>}
-            {error && <p className="errMsg">{error}</p>}
-          </div>
-
 
           {message && <p className="rdOk">{message}</p>}
           {error && <p className="rdErr">{error}</p>}
         </div>
       </div>
+
+        {/* VINILI CONSIGLIATI */}
+        <section className="rdRelatedSection">
+          <h2 className="rdRelatedTitle">Potrebbero piacerti anche</h2>
+
+          <div className="rdRelatedRow">
+            {relatedRecords.map((rec) => (
+              <div key={rec._id} className="productCard">
+                <div className="productMedia">
+                  <img
+                    className="productImg"
+                    src={
+                      rec.imageUrl?.startsWith("http")
+                        ? rec.imageUrl
+                        : `${BACKEND_URL}${rec.imageUrl}`
+                    }
+                    alt={rec.title}
+                  />
+
+                  <Link
+                    className="productOverlayBtn"
+                    to={`/records/${rec._id}`}
+                  >
+                    View Product
+                  </Link>
+                </div>
+
+                <div className="productArtist">{rec.artist}</div>
+                <div className="productTitle">{rec.title}</div>
+              </div>
+            ))}
+          </div>
+        </section>
     </div>
   );
 }

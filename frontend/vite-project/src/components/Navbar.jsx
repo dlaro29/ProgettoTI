@@ -1,5 +1,5 @@
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
-import { apiFetch, logoutLocal } from "../api/api";
+import { apiFetch } from "../api/api";
 import "./Navbar.css";
 import logo from "../assets/logo.png";
 import searchIcon from "../assets/lente.svg";
@@ -12,6 +12,7 @@ export default function Navbar() {
   const [sp, setSp] = useSearchParams();
   const searchValue = sp.get("search") || "";
   const [genres, setGenres] = useState([]);
+  const [cartCount, setCartCount] = useState(0);
 
   const yearRanges = [
     { label: "60s", from: 1960, to: 1969 },
@@ -29,6 +30,49 @@ export default function Navbar() {
   { label: "Oltre 40€", min: 40, max: null }
   ];
 
+  //caricamento carrello
+  useEffect(() => {
+    const loadCartCount = async () => {
+      const token = localStorage.getItem("token");
+      if (!token) {
+        setCartCount(0);
+        return;
+      }
+
+    try {
+      const cart = await apiFetch("/cart");
+      const totalQty = cart.reduce((sum, item) => sum + (item.quantity ?? 1), 0);
+      setCartCount(totalQty);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+    loadCartCount();
+  }, []);
+
+  //aggiornamento carrello all'aggiunta
+  useEffect(() => {
+    const updateCartCount = async () => {
+      try {
+        const cart = await apiFetch("/cart");
+        const totalQty = cart.reduce(
+          (sum, item) => sum + (item.quantity ?? 1),
+          0
+        );
+        setCartCount(totalQty);
+      } catch (err) {
+        console.error(err);
+      }
+    };
+    
+    window.addEventListener("cart-updated", updateCartCount);
+
+    return () => {
+      window.removeEventListener("cart-updated", updateCartCount);
+    };
+  }, []);
+
+
   //filtri per popup
   useEffect(() => {
     apiFetch("/records/meta/genres").then(setGenres).catch(console.error);
@@ -43,10 +87,6 @@ export default function Navbar() {
     navigate(`/?${next.toString()}`, { replace: true });
   };
 
-  const handleLogout = () => {
-    logoutLocal();
-    navigate("/");
-  };
 
   return (
     <div className="navWrap">
@@ -56,7 +96,7 @@ export default function Navbar() {
         <div className="navTopInner">
           <Link to="/">Licensing</Link>
           <Link to="/">Newsletter</Link>
-          <Link to="/">Contact Us</Link>
+          <Link to="/">Contattaci</Link>
           <Link to="/">About</Link>
           <Link to="/">Gift Cards</Link>
           <div className="navTopRight">
@@ -65,14 +105,8 @@ export default function Navbar() {
               <div className="navAccountWrap">
                 <Link to="/account" className="navAccount">
                   <FaUserCircle />
-                  <span>My Account</span>
+                  <span>Account</span>
                 </Link>
-
-                <div className="navAccountMenu">
-                  <button className="logoutItem" onClick={handleLogout}>
-                    ↪ Logout
-                  </button>
-                </div>
               </div>
               </>
             ) : (
@@ -81,14 +115,18 @@ export default function Navbar() {
                 Sign in
               </Link>
             )}
-            <Link to="/cart" className="navIconBtn" aria-label="Carrello">
+            <Link to="/cart" 
+              className="navIconBtn" 
+              aria-label="Carrello"
+            >
+              {cartCount > 0 && <span className="cartBadge">{cartCount}</span>}
               <FaShoppingCart />
             </Link>
           </div>
         </div>
       </div>
 
-      {/* navbar nera */}
+      {/* BARRA NERA */}
       <div className="navMain">
         <div className="navMainInner">
           <div className="navMainLeft">

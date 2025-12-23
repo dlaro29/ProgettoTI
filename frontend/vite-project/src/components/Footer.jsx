@@ -18,7 +18,7 @@ export default function Footer() {
           <a href="#">FAQ</a>
           <a href="#">Contact Us</a>
 
-          <h4 className="footerSubTitle">SECURE PAYMENTS</h4>
+          <h4 className="footerSubTitle">PAGAMENTI SICURI</h4>
           <div className="paymentIcons">
           <a href="#">Paypal</a>
           <a href="#">Visa</a>
@@ -45,7 +45,7 @@ export default function Footer() {
         </div>
 
         <div className="footerCol">
-          <h4>OUR SHOP</h4>
+          <h4>IL NOSTRO SHOP</h4>
           <a href="#">Visit Our Record Shop</a>
 
           <h4 className="footerSubTitle">FOLLOW US</h4>

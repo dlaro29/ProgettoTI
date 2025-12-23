@@ -40,8 +40,7 @@
 
 /* Colonna immagine (stile “product page”) */
 .rdMediaCol {
-  position: sticky;
-  top: 92px; /* lascia spazio alla navbar sticky */
+  position: static;
 }
 
 .rdCoverBox {
@@ -228,26 +227,109 @@
   line-height: 1.55;
 }
 
-.rdOk { color: green; margin-top: 12px; }
-.rdErr { color: red; margin-top: 12px; }
-.rdTracklist {
-  margin: 0;
-  padding-left: 18px;
-  display: grid;
-  gap: 8px;
+.rdOk { 
+  margin-top: 12px;
+  padding: 8px 12px;
+  background: #e9f7ef;
+  color: #1a7f37;
+  border-radius: 8px;
+  font-weight: 600;
+}
+.rdErr {
+  margin-top: 12px;
+  padding: 8px 12px;
+  background: #ffad8d;
+  color: red;
+  border-radius: 8px;
+  font-weight: 600;
 }
 
-.rdTrack {
+/* TRACKLIST */
+.rdTracklistBox {
+  margin-top: 26px;
+}
+
+.rdTracklistTitle {
+  font-family: Oswald, Inter, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 1.15rem;
+  margin: 0 0 10px;
   display: flex;
-  gap: 8px;
+  align-items: center;
+  gap: 14px;
+}
+
+.rdTracklistTitle::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #111;
+  opacity: 0.25;
+}
+
+.rdTracklistLarge {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 10px;
+  font-size: 1.05rem;
+  line-height: 1.4;
+}
+
+.rdTracklistLarge  li {
+  display: flex;
+  gap: 10px;
   align-items: baseline;
-  justify-content: space-between;
+}
+
+.rdTrackIndex {
+  opacity: 0.6;
+  font-weight: 600;
+  min-width: 22px;
 }
 
 .rdPos {
   margin-right: 10px;
   opacity: 0.75;
   white-space: nowrap;
+}
+
+.rdRelatedSection {
+  margin-top: 56px;
+}
+
+.rdRelatedTitle {
+  font-size: 1.1rem;
+  font-family: Oswald, Inter, sans-serif;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.rdRelatedTitle::after {
+  content: "";
+  height: 1px;
+  background: #111;
+  flex: 1;
+  opacity: 0.25;
+}
+
+.rdRelatedRow {
+  display: flex;
+  gap: 22px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+}
+
+.rdRelatedRow .productCard {
+  flex: 0 0 260px;
+  scroll-snap-align: start;
 }
 
 /* Responsive */
