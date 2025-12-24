@@ -1,85 +1,125 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom"
 import { apiFetch } from "./api/api";
+import "./Order.css";
 
 //riepilogo del carrello per confermare l'ordine
 function Order() {
     const navigate = useNavigate();
 
     const [cart, setCart] = useState([]);
+    const [user, setUser] = useState(null);
     const [error, setError] = useState("");
-    const [message, setMessage] = useState("");
     const [loading, setLoading] = useState(true);
 
     //carico carrello per un riepilogo prima della conferma
     useEffect(() => {
-        const loadCart = async () => {
-            setError("");
-            setLoading(true);
-
+        const loadData = async () => {
             try {
-                const data = await apiFetch("/cart");
-                setCart(Array.isArray(data) ? data: []);
+                const cartData = await apiFetch("/cart");
+                setCart(cartData);
+                
+                const userData = await apiFetch("/auth/me");
+                setUser(userData);
             } catch (err) {
                 setError(err.message);
             } finally { setLoading(false); }
         };
-        loadCart();
+        loadData();
     }, []);
+
+    const total = cart.reduce((sum, item) => sum + item.record.price * item.quantity, 0);
+    const shippingCost = total >= 50 ? 0: 4.99;
+    const finalTot = total + shippingCost;
 
     //creo l'ordine lato backend
     const confirmOrder = async () => {
-        setError("");
-        setMessage("");
-
         try {
             await apiFetch("/orders", { method: "POST"});
-            setMessage("Ordine confermato!");
-
-            //dopo 1s torna al carrello
+            navigate("/myorders");
+            //dopo 2s indirizzo in /myorders
             setTimeout(() => {
                 navigate("/myorders");
-            }, 1000);
+            }, 2000);
         } catch (err) {
             setError(err.message);
         }
     };
 
-    //calcolo totale
-    const total = cart.reduce((sum, item) => {
-        const price = item.record?.price ?? 0;
-        const qty = item.quantity ?? 1;
-        return sum + price * qty;
-    }, 0);
+    if (loading) return <p>Caricamento checkout...</p>
+    if (error) return <p>{error}</p>
 
     return (
-        <div>
+        <div className="checkoutPage">
             <h1>Checkout</h1>
 
-            {loading && <p>Caricamento riepilogo...</p>}
-            {error && <p style={{ color: "red" }}>{error}</p>}
-            {message && <p style={{ color: "green"}}>{message}</p>}
+            <div className="checoutGrid">
+                {/* COLONNA SINISTRA */}
+                <div className="checkoutLeft">
+                    {/* PRODOTTI */}
+                    <section className="checkoutSection">
+                        <h2>Riepilogo prodotti</h2>
 
-            {!loading && !error && cart.length == 0 && (
-                <p>Il carrello è vuoto</p>
-            )}
-
-            {!loading && !error && cart.length > 0 && (
-                <>
-                    <h3>Riepilogo</h3> 
-                    <ul>
                         {cart.map((item, idx) => (
-                            <li key={item.record?._id || item._id || idx}>
-                                <strong>{item.record?.title}</strong> - quantità {item.quantity} - € {item.record?.price}
-                            </li>
-                        ))}    
-                    </ul>
+                            <div key={idx} className="checkoutItem">
+                                <img
+                                    src={item.record.imageUrl}
+                                    alt={item.record.title}
+                                />
 
-                    <p><strong>Totale:</strong> €{total.toFixed(2)}</p>
+                                <div>
+                                    <strong>{item.record.title}</strong>
+                                    <p className="muted">
+                                        Quantità: {item.quantity}
+                                    </p>
+                                </div>
 
-                    <button onClick={confirmOrder}>Conferma ordine</button>
-                </>
-            )}
+                                <div className="checkoutPrice">
+                                    € {(item.record.price * item.quantity).toFixed(2)}
+                                </div>
+                            </div>
+                        ))}
+                    </section>
+
+                    {/* DATI UTENTE */}
+                    {user && (
+                        <section className="checkoutSection">
+                            <h2>Dati di spedizione</h2>
+
+                            <p><strong>Nome:</strong>{user.name} {user.surname}</p>
+                            <p><strong>Email:</strong>{user.email}</p>
+                            <p><strong>Indirizzo:</strong>{user.address}</p>
+                        </section>
+                    )}
+                </div>
+
+                {/* COLONNA DESTRA */}
+                <div className="checkoutRight">
+                    <div className="checkoutSummary">
+                        <h3>Riepilogo ordine</h3>
+
+                        <div className="summaryRow">
+                            <span>Subtotale</span>
+                            <span>€ {total.toFixed(2)}</span>
+                        </div>
+                        <div className="summaryRow shipping">
+                            <span>Spedizione</span>{" "}
+                            {shippingCost === 0 ? "€ 0.00" : `€ ${shippingCost.toFixed(2)}`}
+                        </div>
+                      <div className="summaryRow total">
+                            <span>Totale</span>
+                            <span>€ {finalTot.toFixed(2)}</span>
+                        </div>
+
+                        <button
+                            className="checkoutBtn"
+                            onClick={confirmOrder}
+                        >
+                            Conferma ordine
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 }

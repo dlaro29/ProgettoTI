@@ -99,6 +99,9 @@ export default function Navbar() {
           <Link to="/">Contattaci</Link>
           <Link to="/">About</Link>
           <Link to="/">Gift Cards</Link>
+          <div className="navPromo">
+            Spedizione gratuita per ordini sopra i 50€!
+          </div>
           <div className="navTopRight">
             {token ? (
               <>
