@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { apiFetch } from "./api/api";
+import "./MyOrders.css";
 
-//pagine dei miei ordini
+//pagine dei miei ordini + embedded per vedere immagini gli altri dati
 function MyOrders({ embedded = false }) {
   const [orders, setOrders] = useState([]);
   const [error, setError] = useState("");
@@ -46,44 +47,60 @@ function MyOrders({ embedded = false }) {
   }
 
   return (
-    <div>
+    <div className="ordersPage">
       {!embedded && <h1>I miei ordini</h1>}
       {embedded && <h3>I miei ordini</h3>}
 
-      <ul>
-        {orders.map((o) => {
-          const items = Array.isArray(o.items) ? o.items : [];
-          const dateText = o.createdAt
-            ? new Date(o.createdAt).toLocaleString()
-            : "—";
+      {orders.length === 0 && <p>Nessun ordine effettuato</p>}
 
-          return (
-            <li key={o._id} style={{ marginBottom: 16 }}>
-              <div><strong>ID ordine:</strong> {o._id}</div>
-              <div><strong>Data:</strong> {dateText}</div>
-              <div><strong>Stato:</strong> {o.status || "—"}</div>
-              <div><strong>Totale:</strong> €{o.total ?? "—"}</div>
+      {orders.map((order) => (
+        <div key={order._id} className="orderCard">
 
-              <div style={{ marginTop: 6 }}>
-                <strong>Articoli:</strong>
-                {items.length === 0 ? (
-                  <div>—</div>
-                ) : (
-                  <ul>
-                    {items.map((it, idx) => (
-                      <li key={it.record?._id || it.record || idx}>
-                        {/* Nel tuo backend hai salvato title/price/quantity dentro items, quindi usiamo quelli */}
-                        {it.title || "—"} — q.tà {it.quantity ?? 1} — €
-                        {it.price ?? "—"}
-                      </li>
-                    ))}
-                  </ul>
-                )}
+          {/* HEADER */}
+          <div className="orderHeader">
+            <div>
+              <h3>Ordine #{order._id}</h3>
+              <p className="orderMeta">
+                data ordine: {new Date(order.createdAt).toLocaleDateString()}
+              </p>
+              <p className="orderMeta">
+                stato dell'ordine: {order.status}
+              </p>
+            </div>
+
+            <div className="orderTotal">
+              € {order.total.toFixed(2)}
+            </div>
+          </div>
+
+          {/* PRODOTTI */}
+          <div className="orderItem">
+            {order.items.map((item, idx) => (
+              <div key={idx} className="orderItem">
+                <img
+                  src={
+                    item.record?.imageUrl ||
+                    "https://via.placeholder.com/80x80?text=Vinile"
+                  }
+                  alt={item.title}
+                  className="orderItemImg"
+                />
+
+                <div className="orderItemInfo">
+                  <h4>{item.title}</h4>
+                  <p className="orderItemMeta">
+                    Quantità: {item.quantity}
+                  </p>
+                </div>
+
+                <div className="orderItemPrice">
+                  € {(item.price * item.quantity).toFixed(2)}
+                </div>
               </div>
-            </li>
-          );
-        })}
-      </ul>
+            ))}
+          </div>
+        </div>
+      ))}
     </div>
   );
 }

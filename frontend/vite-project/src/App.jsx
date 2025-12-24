@@ -24,6 +24,7 @@ function App() {
           <Route path="cart" element={<Cart />} />
           <Route path="order" element={<Order />} />
           <Route path="account" element={<Account />} />
+          <Route path="myorders" element={<MyOrders />} />
         </Route>
       </Route>
     </Routes>

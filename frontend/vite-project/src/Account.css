@@ -4,19 +4,66 @@
   padding: 0 16px;
 }
 
-.accountSection {
-  margin-bottom: 40px;
+.accountTitle {
+  margin-bottom: 30px;
 }
 
-.accountInfo p {
+
+.accountSection {
+  margin-bottom: 36px;
+}
+
+.accountSection h2 {
+  margin-bottom: 12px;
+  font-size: 1.2rem;
+}
+
+.accountCard {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+}
+
+.accountCard p {
   margin: 6px 0;
+}
+
+.orderRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.orderRow:last-child {
+  border-bottom: none;
+}
+
+.orderMeta {
+  color: #777;
+  font-size: 0.9rem;
+}
+
+.accountLink {
+  display: inline-block;
+  color: #000;
+  margin-top: 14px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.accountLink:hover {
+  text-decoration: underline;
 }
 
 .logoutBtn {
   background: #c0392b;
   color: #fff;
   border: none;
-  padding: 10px 18px;
+  padding: 12px 18px;
+  border-radius: 6px;
   cursor: pointer;
 }
 

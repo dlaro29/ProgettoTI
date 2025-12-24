@@ -1,0 +1,60 @@
+.orderPage {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 16px;
+}
+
+.orderCard {
+    background: #fff;
+    border-radius: 14px;
+    padding: 20px;
+    margin-bottom: 30px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+}
+
+.orderHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 14px;
+    margin-bottom: 14px;
+}
+
+.orderMeta {
+    color: #777;
+    font-size: 0.9rem;
+}
+
+.orderTotal {
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.orderItems {
+    display: flex;
+    grid-template-columns: 80px 1fr auto;
+    gap: 14px;
+    align-items: center;
+}
+
+.orderItemImg {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    border: 1px solid #eee;
+    border-radius:4px;
+}
+
+.orderItemInfo h4 {
+    margin: 0 0 4px;
+}
+
+.orderItemMeta {
+    font-size: 0.9rem;
+    color: #777;
+}
+
+.orderItemPrice {
+    font-weight: 600;
+}
