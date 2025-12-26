@@ -53,14 +53,6 @@
   background: black;
 }
 
-.navPromo {
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  margin-left: 24px;
-  white-space: nowrap;
-  color: #000000;
-}
-
 .navTopBtn {
   background: transparent;
   border: none;

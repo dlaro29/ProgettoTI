@@ -121,7 +121,7 @@ function Cart() {
         {cart.length > 0 && (
           <div className="cartFooter">
             <div className="cartRow">
-              <span>Spedizione</span>
+              <span>Spedizione gratuita per ordini superiori a 50.00€</span>
               <span className="muted">Calcolata al checkout</span>
             </div>
 

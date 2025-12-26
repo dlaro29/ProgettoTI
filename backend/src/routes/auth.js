@@ -13,10 +13,10 @@ const router = express.Router();
 //req = richiesta inviata dal client, res = risposta del server
 router.post('/register', async (req, res) => {
   try {
-    const { name, surname, email, password, address } = req.body;
+    const { name, surname, email, password, address, city } = req.body;
 
     // controllo campi obbligatori
-    if (!name || !surname || !email || !password || !address) {
+    if (!name || !surname || !email || !password || !address || !city) {
       return res.status(400).json({ message: "Tutti i campi sono obbligatori" });
     }
 
@@ -36,6 +36,7 @@ router.post('/register', async (req, res) => {
       email,
       password: hashedPassword,
       address,
+      city, 
       role: 'customer'
     });
 
@@ -121,6 +122,7 @@ router.get('/me', authRequired, async(req, res) => {
             surname: user.surname,
             email: user.email,
             address: user.address,
+            city: user.city,
             role: user.role
         });
     } catch (err) {

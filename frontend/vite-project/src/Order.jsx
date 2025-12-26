@@ -11,6 +11,9 @@ function Order() {
     const [user, setUser] = useState(null);
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(true);
+    const [address, setAddress] = useState("");
+    const [city, setCity] = useState("");
+
 
     //carico carrello per un riepilogo prima della conferma
     useEffect(() => {
@@ -19,8 +22,13 @@ function Order() {
                 const cartData = await apiFetch("/cart");
                 setCart(cartData);
                 
-                const userData = await apiFetch("/auth/me");
+                const userData = await apiFetch("/auth/me");    
+                const address = localStorage.getItem("shipAddress") || userData.address;
+                const city = localStorage.getItem("shipCity") || userData.city;
+
                 setUser(userData);
+                setAddress(address);
+                setCity(city);
             } catch (err) {
                 setError(err.message);
             } finally { setLoading(false); }
@@ -86,9 +94,10 @@ function Order() {
                         <section className="checkoutSection">
                             <h2>Dati di spedizione</h2>
 
-                            <p><strong>Nome:</strong>{user.name} {user.surname}</p>
-                            <p><strong>Email:</strong>{user.email}</p>
-                            <p><strong>Indirizzo:</strong>{user.address}</p>
+                            <p><strong>Nome: </strong>{user.name} {user.surname}</p>
+                            <p><strong>Email: </strong>{user.email}</p>
+                            <p><strong>Indirizzo: </strong>{address}</p>
+                            <p><strong>Città: </strong>{city}</p>
                         </section>
                     )}
                 </div>

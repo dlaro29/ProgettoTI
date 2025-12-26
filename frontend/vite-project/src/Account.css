@@ -29,6 +29,37 @@
   margin: 6px 0;
 }
 
+.accountAddress {
+  margin: 6px 0 12px;
+  line-height: 1.4;
+}
+
+.accountAddressInput {
+  width: 100%;
+  max-width: 360px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-family: inherit;
+  font-size: 0.95rem;
+}
+
+.accountBtn {
+  background: #eee;
+  color: #000000;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-right: 8px;
+  cursor: pointer;
+}
+
+.accountBtn:hover {
+  opacity: 0.85;
+}
+
 .orderRow {
   display: flex;
   justify-content: space-between;
@@ -65,6 +96,7 @@
   padding: 12px 18px;
   border-radius: 6px;
   cursor: pointer;
+  font-weight: 600;
 }
 
 .logoutBtn:hover {

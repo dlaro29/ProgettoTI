@@ -13,6 +13,7 @@ function Auth() {
     const [name, setName] = useState("");
     const [surname, setSurname] = useState("");
     const [address, setAddress] = useState("");
+    const [city, setCity] = useState("");
     const [error, setError] = useState("");
 
     const navigate = useNavigate();
@@ -36,14 +37,14 @@ function Auth() {
     /* REGISTER */
     const handleRegister = async () => {
         setError("");
-        if (!name || !surname || !email || !password || !address) {
+        if (!name || !surname || !email || !password || !address || !city) {
             setError("Compila tutti i campi");
             return;
         }
         try {
             const res = await apiFetch("/auth/register", {
                 method: "POST",
-                body: { name, surname, email, password, address }
+                body: { name, surname, email, password, address, city }
             });
 
             localStorage.setItem("token", res.token);
@@ -154,6 +155,13 @@ function Auth() {
                             placeholder="Indirizzo"
                             value={address}
                             onChange={(e) => setAddress(e.target.value)}
+                        />
+
+                        <input
+                            className="authInput"
+                            placeholder="Città"
+                            value={city}
+                            onChange={(e) => setCity(e.target.value)}
                         />
 
                         <button

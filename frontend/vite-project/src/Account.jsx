@@ -8,6 +8,10 @@ function Account() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [orders, setOrders] = useState([]);
+  const [address, setAddress] = useState("");
+  const [editAddress, setEditAddress] = useState(false);
+  const [city, setCity] = useState("");
+  const [editCity, setEditCity] = useState(false);
 
   const navigate = useNavigate();
 
@@ -16,8 +20,13 @@ function Account() {
       setError("");
       try {
         const userData = await apiFetch("/auth/me");
+        const savedAddress = localStorage.getItem("shipAddress") || userData.address;
+        const savedCity = localStorage.getItem("shipCity") || userData.city;
+        
         setUser(userData);
-
+        setAddress(savedAddress);
+        setCity(savedCity);
+        
         const ordersData = await apiFetch("/orders/myorders");
         setOrders(ordersData);
       } catch (err) {
@@ -34,6 +43,8 @@ function Account() {
   const handleLogout = () => {
     logoutLocal();
     window.dispatchEvent(new Event("cart-updated"));
+    localStorage.removeItem("shipAddress");
+    localStorage.removeItem("shipCity");
     navigate("/");
   };
 
@@ -52,9 +63,53 @@ function Account() {
 
         <div className="accountCard">
           <p><strong>Nome:</strong> {user.name}</p>
-          <p><strong>Cognome: </strong>{user.surname}</p>
+          <p><strong>Cognome:</strong> {user.surname}</p>
           <p><strong>Email:</strong> {user.email}</p>
-          <p><strong>Indirizzo:</strong> {user.address}</p>
+          <p>        
+            <strong>Città: </strong>
+            {!editCity ? (
+              <span className="accountAddress">{city}</span>
+            ) : (
+              <textarea
+                className="accountAddressInput"
+                value={city}
+                onChange={(e) => setCity(e.target.value)}
+                rows={1}
+              />
+            )}
+          </p>
+          <p>
+            <strong>Indirizzo: </strong>
+            {!editAddress ? (
+              <span className="accountAddress">{address}</span>
+            ) : (
+              <textarea
+                className="accountAddressInput"
+                value={address}
+                onChange={(e) => setAddress(e.target.value)}
+                rows={1}
+              />
+            )}
+          </p>
+          <button
+            className="accountBtn"
+            onClick={() => {
+              if (editCity) { localStorage.setItem("shipCity", city); }
+              setEditCity(!editCity);
+            }}
+          >
+            {editCity ? "Salva città" : "Modifica città"}
+          </button>
+          <button
+            className="accountBtn"
+            onClick={() => {
+              if (editAddress) { localStorage.setItem("shipAddress", address); }
+              setEditAddress(!editAddress);
+            }}
+          >
+            {editAddress ? "Salva indirizzo" : "Modifica indirizzo"}
+          </button>
+
         </div>
       </section>
 
