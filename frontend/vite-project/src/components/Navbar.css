@@ -5,9 +5,7 @@
   z-index: 2000;
 }
 
-/* =========================
-   BARRA BLU SUPERIORE
-========================= */
+/* BARRA BLU SUPERIORE */
 .navTop {
   background: var(--blue);
   color: #000000;
@@ -147,9 +145,7 @@
   border-radius: 999px;
 }
 
-/* =========================
-   BARRA NERA PRINCIPALE
-========================= */
+/* BARRA NERA PRINCIPALE */
 .navMain {
   background: var(--black);
   color: #ffffff;
@@ -253,7 +249,7 @@
 /* MENU */
 .navMainLinks {
   display: flex;
-  align-items: center;   /* 🔑 allinea menu e search sulla stessa linea */
+  align-items: center;
   gap: 18px;
   white-space: nowrap;
 }
@@ -272,9 +268,7 @@
   opacity: 1;
 }
 
-/* =========================
-   SEARCH A DESTRA
-========================= */
+/* SEARCH A DESTRA */
 .navMainRight {
   margin-left: auto;           /* FIX CHIAVE */
   width: 420px;                /* larghezza realistica */

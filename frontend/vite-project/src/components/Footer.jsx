@@ -14,7 +14,7 @@ export default function Footer() {
 
         <div className="footerCol">
           <h4>CUSTOMER SERVICE</h4>
-          <a href="#">My Account</a>
+          <a href="/account">My Account</a>
           <a href="#">FAQ</a>
           <a href="#">Contact Us</a>
 
@@ -38,7 +38,7 @@ export default function Footer() {
 
         <div className="footerCol">
             <h4>COMPANY</h4>
-            <a href="#">About Us</a>
+            <a href="/about">About Us</a>
             <a href="#">Wholesale</a>
             <a href="#">Licensing</a>
             <a href="#">Newsletter</a>
@@ -57,6 +57,12 @@ export default function Footer() {
                 <FaSpotify />
             </div>
         </div>
+        </div>
+
+        <div className="footerCol">
+          <p className="footerSignature">
+            © 2025/2026 - Progetto universitario realizzato da Davide La Rosa
+          </p>
         </div>
     </footer>
 );

@@ -60,3 +60,10 @@
 .socialIcons svg:hover {
     color: var(--blue);
 }
+
+.footerSignature {
+    margin-top: 16px;
+    font-size: 0.85rem;
+    color: #777;
+    text-align: center;
+}

@@ -8,6 +8,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import Layout from "./components/Layout";
 import Account from "./Account";
 import Auth from "./Auth";
+import About from "./About";
 
 //componente principale dell'app
 function App() {
@@ -18,6 +19,7 @@ function App() {
         <Route index element={<Home />} />
         <Route path="records/:id" element={<RecordDetail />} />
         <Route path="auth" element={<Auth />} />
+        <Route path="about" element={<About />} />
 
         {/* rotte protette */}
         <Route element={<ProtectedRoute />} >

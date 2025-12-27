@@ -97,7 +97,7 @@ export default function Navbar() {
           <Link to="/">Licensing</Link>
           <Link to="/">Newsletter</Link>
           <Link to="/">Contattaci</Link>
-          <Link to="/">About</Link>
+          <a href="/about">About</a>
           <Link to="/">Gift Cards</Link>
           <div className="navTopRight">
             {token ? (

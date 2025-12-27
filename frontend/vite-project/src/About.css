@@ -1,0 +1,98 @@
+.aboutPage {
+  width: 100%;
+}
+
+/* HERO */
+.aboutHero {
+  height: 360px;
+  border-radius: 14px;
+  margin: 6px 0 32px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.aboutHeroOverlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 28px;
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,0.6),
+    rgba(0,0,0,0.15),
+    transparent
+  );
+}
+
+.aboutHeroTitle {
+  color: #fff;
+  font-family: Oswald, Inter, sans-serif;
+  font-size: 3rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin: 0;
+}
+
+.aboutHeroSubtitle {
+  color: rgba(255,255,255,0.9);
+  margin-top: 8px;
+}
+
+/* CONTENUTO */
+.aboutContent {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 12px;
+}
+
+.aboutSection {
+  margin-bottom: 48px;
+}
+
+.aboutSection h2 {
+  margin-bottom: 12px;
+}
+
+.aboutSection p {
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+.aboutFull {
+    max-width: 1200px;
+    margin-left: 0;
+}
+/* SEZIONE CON IMMAGINE LATERALE */
+.aboutSplit {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 48px;
+    align-items: start;
+}
+
+.aboutText {
+    text-align: left;
+}
+
+.aboutImage {
+    width: 100%;
+    max-height: 580px;
+    object-fit: cover;
+    border-radius: 16px;
+}
+
+.aboutImage2 {
+    width: 40%;
+    max-height: 580px;
+    object-fit: cover;
+    border-radius: 16px;
+}
+
+.aboutDivider {
+  height: 1px;
+  background: #000000;
+  margin: 32px 0;
+}

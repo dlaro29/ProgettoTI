@@ -77,8 +77,10 @@ Sistemato auth: true per rendere più semplice il codice e autorizzare sempre l'
 12. Migliorata RecordDetail page + carrello dinamico e consigliati
 13. migliorata Cart page + dinamicità quantità prodotti
 14. modificato login e register in un unico file
-15. account e myorder page ux
+15.  account e myorder page ux
 16.  Checkout page UX
+17. possibilità dell'utente di modificare indirizzo e città nell'account
+18. /about page con dettagli progetto e sintesi
 
 DA FARE:
 4. aggiungere admin

@@ -332,27 +332,3 @@
   scroll-snap-align: start;
 }
 
-/* Responsive */
-@media (max-width: 980px) {
-  .rdGrid {
-    grid-template-columns: 1fr;
-  }
-
-  .rdMediaCol {
-    position: relative;
-    top: auto;
-  }
-
-  .rdBuyRow {
-    grid-template-columns: 1fr;
-    align-items: stretch;
-  }
-
-  .rdQty {
-    width: fit-content;
-  }
-
-  .rdCta {
-    width: 100%;
-  }
-}
