@@ -1,4 +1,4 @@
-#Progetto e-Commerce di Vinili Musicali
+# Progetto e-Commerce di Vinili Musicali
 ## Descrizione generale e obiettivi
 Il progetto consiste nella realizzazione di un sito e-Commerce di vinili musicali, sviluppato come applicazione web full-stack.
 L’obiettivo principale è simulare il funzionamento di un negozio online reale, permettendo agli utenti di consultare un catalogo di prodotti, applicare filtri e ricerche, gestire un carrello, registrarsi al sito ed effettuare ordini.
