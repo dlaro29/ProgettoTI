@@ -82,7 +82,15 @@ Sistemato auth: true per rendere più semplice il codice e autorizzare sempre l'
 17. possibilità dell'utente di modificare indirizzo e città nell'account
 18. /about page con dettagli progetto e sintesi
 
-DA FARE:
-4. aggiungere admin
+ADMIN
+19.  /account per admin con ordini dei clienti
+20. possibilità di modificare lo stato dell'ordine e visualizzarlo nel dettaglio + UX
+21. rotta /admin/records per gestione CRUD del catalogo + UX
+22. aggiunta protezione alle rotte admin 
+23. eliminazione OK
+24. aggiunta OK
+25 modifica OK
+
+FASE FINALE:
 5. eseguire test;
 6. preparare documentazione e consegna.

@@ -9,12 +9,16 @@ import Layout from "./components/Layout";
 import Account from "./Account";
 import Auth from "./Auth";
 import About from "./About";
+import AdminRecords from "./AdminRecords";
+import AdminRoute from "./components/AdminRoute";
+import AdminRecordForm from "./AdminRecordForm";
 
 //componente principale dell'app
 function App() {
   return (
     //così App decide quale componente mostrare in base alla rotta
     <Routes>
+
       <Route path="/" element={<Layout />} >
         <Route index element={<Home />} />
         <Route path="records/:id" element={<RecordDetail />} />
@@ -27,7 +31,14 @@ function App() {
           <Route path="order" element={<Order />} />
           <Route path="account" element={<Account />} />
           <Route path="myorders" element={<MyOrders />} />
-        </Route>
+          {/* rotte admin */}
+          <Route element={<AdminRoute />} >
+            <Route path="admin/records" element={<AdminRecords />} />
+            <Route path="admin/records/new" element={<AdminRecordForm mode="create"/>} />
+            <Route path="admin/records/edit/:id" element={<AdminRecordForm mode="edit"/>} />
+          </Route>
+          </Route>
+
       </Route>
     </Routes>
   );

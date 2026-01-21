@@ -76,7 +76,7 @@ function MyOrders({ embedded = false }) {
           {/* PRODOTTI */}
           <div className="orderItem">
             {order.items.map((item, idx) => (
-              <div key={idx} className="orderItem">
+              <div key={idx} className="orderItemRow">
                 <img
                   src={
                     item.record?.imageUrl ||

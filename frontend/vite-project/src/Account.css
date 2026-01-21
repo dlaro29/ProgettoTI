@@ -101,3 +101,102 @@
 .logoutBtn:hover {
   background: #a93226;
 }
+
+.accountCardLogout {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+}
+
+/* ORDINI ADMIN */
+.adminOrder {
+  padding: 12px 0;
+}
+
+.adminOrder .orderSummary {
+  padding: 12px;
+  border-radius: 8px;
+}
+
+.adminOrder:has(.orderDetail) .orderSummary {
+  background: #b5ffefa6;
+  border: 1px solid #e0e0e0;
+}
+
+.orderDetail {
+  margin-top: 8px;
+  padding-top: 16px;
+  background: #b5ffefa6;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+}
+
+.orderDetailGrid {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 32px;
+}
+
+.orderDetailLeft {
+  padding-left: 16px;
+}
+
+.orderDetailLeft p {
+  margin: 6px 0;
+}
+
+.orderDetailRight {
+  padding-right: 16px;
+}
+
+.productBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.productBlock h4 {
+  margin-bottom: 8px;
+}
+
+.productRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 4px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.productRow:last-child {
+  border-bottom: none;
+}
+
+.productTitle {
+  font-weight: 500;
+  display: flex;
+  flex-direction: column;
+}
+
+.productPrice {
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.productArtist {
+  font-size: 0.8rem;
+  color: #666;
+  font-weight: 400;
+}
+
+.orderStatusBox {
+  margin-top: 8px;
+}
+
+.orderStatusBox select {
+  display: block;
+  margin-top: 6px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+}

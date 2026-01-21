@@ -56,10 +56,37 @@ router.get('/myorders', authRequired, async (req, res) => {
 router.get('/', authRequired, adminRequired, async (req, res) => {
     //recupero tutti gli ordini
     try {
-        const orders = await Order.find().populate('user', 'email').sort({createdAt: -1});
+        const orders = await Order.find()
+        //dati del cliente
+        .populate('user', 'name surname email address city')
+        .sort({createdAt: -1});
+
         res.json(orders);
     } catch (err) {
         res.status(500).json({message: 'Errore nel recupero degli ordini'});
+    }
+});
+
+//PUT modificare lo stato di un ordine
+router.put('/:id/status', authRequired, adminRequired, async (req, res) => {
+    try {
+        const { status } = req.body;
+
+        //controllo sicurezza
+        if (!status) { return res.status(400).json({ message: "Status mancante" }); }
+
+        const order = await Order.findByIdAndUpdate(
+            req.params.id,
+            { status },
+            { new: true, runValidators: true } //il DB conferma l'update
+        );
+
+        if (!order) { return res.status(404).json({ message: "Ordine non trovato "}); }
+
+        res.json(order);
+    } catch (err) {
+        console.error("Errore update stato: ", err.message);
+        res.status(500).json({ message: "Errore aggiornamento stato ordine "});
     }
 });
 

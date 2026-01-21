@@ -27,6 +27,7 @@ router.get('/', async (req, res) => {
             if (yearTo) filter.year.$lte = Number (yearTo);
         }
         const records = await Record.find(filter);
+        
         res.json(records);
     } catch (err) {
         res.status(500).json({ message: "Errore nella ricerca dei vinili" });
@@ -37,6 +38,7 @@ router.get('/', async (req, res) => {
 router.get("/meta/genres", async (req, res) => {
     try {
         const genres = await Record.distinct("genre");
+        
         res.json(genres);
     } catch (err) {
         res.status(500).json({ message: "Errore nel recupero dei generi "});
@@ -49,21 +51,10 @@ router.get('/:id', async (req, res) => {
         //trovo il vinile per id
         const record = await Record.findById(req.params.id);
         if (!record) { return res.status(404).json({ message: "Vinile non trovato" }); }
+       
         res.json(record);
     } catch (err) {
         res.status(500).json({ message: "Errore nel recupero del vinile" });
-    }
-});
-
-// aggiungere un nuovo vinile
-router.post('/', async (req, res) => {
-    try {
-        const newRecord = new Record(req.body);
-        await newRecord.save(); // <--- SALVATAGGIO NEL DB
-        res.status(201).json(newRecord);
-    } catch (err) {
-        console.error("Errore POST /api/records:", err);
-        res.status(400).json({ message: "Errore nell'aggiunta del vinile" });
     }
 });
 
@@ -73,6 +64,7 @@ router.post('/', authRequired, adminRequired, async (req, res) => {
     try {
         const newRecord = new Record(req.body);
         await newRecord.save();
+        
         res.status(201).json(newRecord);
     } catch (err) {
         res.status(400).json({ message: "Errore nella creazione del vinile" });
@@ -90,6 +82,7 @@ router.put('/:id', authRequired, adminRequired, async (req, res) => {
         );
         //controllo se il vinile esiste
         if (!updatedRecord) { return res.status(404).json({ message: "Vinile non trovato" }); }
+        
         res.json(updatedRecord);
     } catch (err) {
         res.status(400).json({ message: "Errore nell'aggiornamento del vinile" });
@@ -103,6 +96,7 @@ router.delete('/:id', authRequired, adminRequired, async (req, res) => {
         //controllo se il vinile esiste ed elimino
         const deletedRecord = await Record.findByIdAndDelete(req.params.id);
         if (!deletedRecord) { return res.status(404).json({ message: "Vinile non trovato" }); }
+        
         res.json({ message: "Vinile eliminato" });
     } catch (err) {
         res.status(500).json({ message: "Errore nell'eliminazione del vinile" });

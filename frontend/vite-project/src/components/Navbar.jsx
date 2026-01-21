@@ -13,7 +13,23 @@ export default function Navbar() {
   const searchValue = sp.get("search") || "";
   const [genres, setGenres] = useState([]);
   const [cartCount, setCartCount] = useState(0);
+  const [user, setUser] = useState(null);
 
+  //caricamento utente
+  useEffect(() => {
+    const loadUser = async () => {
+      try {
+        const data = await apiFetch("/auth/me");
+        setUser(data);
+      } catch {
+        setUser(null);
+      }
+    };
+
+    loadUser();
+  }, []);
+
+  //definizione range per filtri
   const yearRanges = [
     { label: "60s", from: 1960, to: 1969 },
     { label: "70s", from: 1970, to: 1979 },
@@ -23,6 +39,7 @@ export default function Navbar() {
     { label: "2010", from: 2010, to: 2019 },
     { label: "2020+", from: 2020, to: null }
   ];
+  //definizione range di prezzo
   const priceRanges = [
   { label: "Sotto 20€", min: 0, max: 19.99 },
   { label: "20€ - 30€", min: 20, max: 30 },
@@ -38,7 +55,6 @@ export default function Navbar() {
         setCartCount(0);
         return;
       }
-
     try {
       const cart = await apiFetch("/cart");
       const totalQty = cart.reduce((sum, item) => sum + (item.quantity ?? 1), 0);
@@ -65,9 +81,11 @@ export default function Navbar() {
       }
     };
     
+    //update carrello all'aggiunta
     window.addEventListener("cart-updated", updateCartCount);
 
     return () => {
+      //rimuovo listener
       window.removeEventListener("cart-updated", updateCartCount);
     };
   }, []);
@@ -99,6 +117,11 @@ export default function Navbar() {
           <Link to="/">Contattaci</Link>
           <a href="/about">About</a>
           <Link to="/">Gift Cards</Link>
+          
+          {user?.role === "admin" && (
+            <Link to="/admin/records">Gestione vinili</Link>
+          )}
+
           <div className="navTopRight">
             {token ? (
               <>
