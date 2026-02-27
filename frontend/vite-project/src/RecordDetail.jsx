@@ -27,7 +27,7 @@ function RecordDetail() {
             `/records?genre=${encodeURIComponent(data.genre)}`);
           
             //esclusione del vinile corrente + limite a 5
-          const filtered = sameGenre.filter(r => r._id !== data._id).slice(0, 5);
+          const filtered = sameGenre.filter(r => r._id !== data._id).slice(0, 10);
           setRelatedRecords(filtered);
         }
       } catch (err) {
